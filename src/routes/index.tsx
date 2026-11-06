@@ -7,6 +7,7 @@ import { Education } from '@/components/Education';
 import { Experience } from '@/components/Experience';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
+import { HouseBackdrops } from '@/components/HouseBackdrops';
 import { Navbar } from '@/components/Navbar';
 import { Projects } from '@/components/Projects';
 import { ScrollProgress } from '@/components/ScrollProgress';
@@ -24,6 +25,7 @@ function Index() {
     <SoundProvider>
       <ThemeProvider>
         <ScrollProgress />
+        <HouseBackdrops />
       <Navbar />
       <main>
         <Hero />

@@ -446,3 +446,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   section h3 { overflow-wrap: anywhere; }
   .hero-image-vignette { background: var(--hero-mobile-overlay); }
 }
+
+/* House backdrops: per-section image, palette, and scroll-linked zoom. */
+section[data-house] { position: relative; isolation: isolate; overflow: hidden; background: var(--house-base) !important; color: var(--ink); --surface: color-mix(in oklch, var(--house-base) 72%, transparent); color-scheme: dark; }
+section[data-house]::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--house-bg) center / cover no-repeat; transform: scale(var(--house-zoom, 1.02)); transform-origin: center; will-change: transform; filter: saturate(1.05) brightness(.8); mask-image: linear-gradient(to bottom, transparent 0, black 14%, black 86%, transparent 100%); }
+section[data-house]::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at center, color-mix(in oklch, var(--house-base) 45%, transparent), color-mix(in oklch, var(--house-base) 78%, transparent) 100%), linear-gradient(to bottom, var(--house-base) 0, transparent 16%, transparent 84%, var(--house-base) 100%); }
+section[data-house] h2, section[data-house] h3 { text-shadow: 0 2px 14px oklch(0 0 0 / .6); }
+section[data-house] .text-crimson { color: var(--crimson); }
+[data-house='stark']     { --house-base: oklch(0.2 0.015 245); --ink: oklch(0.96 0.01 240); --muted: oklch(0.84 0.02 240); --line: oklch(0.5 0.03 240); --accent: oklch(0.85 0.04 230); --crimson: oklch(0.78 0.05 230); }
+[data-house='lannister'] { --house-base: oklch(0.18 0.06 25);  --ink: oklch(0.96 0.03 90);  --muted: oklch(0.86 0.04 80);  --line: oklch(0.5 0.1 40);   --accent: oklch(0.82 0.15 85);  --crimson: oklch(0.7 0.18 28); }
+[data-house='baratheon'] { --house-base: oklch(0.16 0.02 80);  --ink: oklch(0.96 0.04 95);  --muted: oklch(0.85 0.05 90);  --line: oklch(0.5 0.08 85);  --accent: oklch(0.86 0.16 92);  --crimson: oklch(0.8 0.12 75); }
+[data-house='greyjoy']   { --house-base: oklch(0.17 0.03 200); --ink: oklch(0.95 0.03 95);  --muted: oklch(0.84 0.03 190); --line: oklch(0.48 0.05 190); --accent: oklch(0.8 0.13 85);   --crimson: oklch(0.78 0.08 190); }
+[data-house='targaryen'] { --house-base: oklch(0.14 0.03 20);  --ink: oklch(0.95 0.02 60);  --muted: oklch(0.83 0.03 40);  --line: oklch(0.45 0.12 25);  --accent: oklch(0.68 0.21 28);  --crimson: oklch(0.78 0.14 45); }
+[data-house='banners']   { --house-base: oklch(0.15 0.02 30);  --ink: oklch(0.96 0.02 80);  --muted: oklch(0.85 0.03 70);  --line: oklch(0.5 0.1 50);   --accent: oklch(0.82 0.15 75);  --crimson: oklch(0.7 0.19 30); }
+section[data-house] *, section[data-house] { transition: color .6s ease, border-color .6s ease, background-color .6s ease; }
