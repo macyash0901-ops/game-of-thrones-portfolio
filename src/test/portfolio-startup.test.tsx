@@ -7,6 +7,7 @@ import { resetPortfolioScroll } from '@/lib/portfolio-navigation';
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
   localStorage.clear();
 });
 
