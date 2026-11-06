@@ -1,5 +1,5 @@
 import { useState, type CSSProperties, type PointerEvent } from 'react';
-import { Braces, Crown, Database, ShieldCheck } from 'lucide-react';
+import { Braces, BrainCircuit, Cloud, Crown, Database, ShieldCheck, Smartphone } from 'lucide-react';
 
 export function Hero3D() {
   const [rotation, setRotation] = useState({ x: -7, y: 12 });
@@ -50,6 +50,15 @@ export function Hero3D() {
       </div>
       <div className="hero-3d-badge hero-3d-badge-bottom flex items-center gap-2 rounded-full border border-line bg-surface/90 px-4 py-2 text-sm text-ink shadow-xl backdrop-blur">
         <ShieldCheck size={16} className="text-accent" /> Secure by design
+      </div>
+      <div className="hero-3d-badge hero-3d-badge-mobile flex items-center gap-2 rounded-full border border-line bg-surface/90 px-4 py-2 text-sm text-ink shadow-xl backdrop-blur">
+        <Smartphone size={16} className="text-accent" /> Flutter/React Native
+      </div>
+      <div className="hero-3d-badge hero-3d-badge-ai flex items-center gap-2 rounded-full border border-line bg-surface/90 px-4 py-2 text-sm text-ink shadow-xl backdrop-blur">
+        <BrainCircuit size={16} className="text-accent" /> AI/ML
+      </div>
+      <div className="hero-3d-badge hero-3d-badge-cloud flex items-center gap-2 rounded-full border border-line bg-surface/90 px-4 py-2 text-sm text-ink shadow-xl backdrop-blur">
+        <Cloud size={16} className="text-accent" /> Cloud/DevOps
       </div>
     </div>
   );

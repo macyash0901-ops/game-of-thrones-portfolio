@@ -3,6 +3,7 @@ import { CountUp } from '@/components/CountUp';
 import { Embers } from '@/components/Embers';
 import { Hero3D } from '@/components/Hero3D';
 import { SplitText } from '@/components/SplitText';
+import { ValyrianText } from '@/components/ValyrianText';
 import { heroStats, profile } from '@/data/portfolio';
 
 
@@ -26,6 +27,7 @@ export function Hero() {
 
       <div className="hero-layout relative z-10 mx-auto grid w-full max-w-6xl items-center px-6">
         <div className="hero-copy">
+          <ValyrianText text="VALAR MORGHULIS" />
           <p className="mb-6 flex items-center gap-4 font-display text-xs uppercase tracking-[0.35em] text-accent">
             <span className="hairline h-px w-12" />
             {profile.title}

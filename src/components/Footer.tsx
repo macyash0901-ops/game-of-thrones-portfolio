@@ -1,9 +1,13 @@
 import { ArrowUp, Crown, Linkedin } from 'lucide-react';
 import { profile } from '@/data/portfolio';
+import { ValyrianText } from '@/components/ValyrianText';
 
 export function Footer() {
   return (
     <footer className="border-t border-line px-6 py-8">
+      <div className="mb-8 flex justify-center py-6">
+        <ValyrianText text="VALAR DOHAERIS" />
+      </div>
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
         <div className="flex items-center gap-3">
           <Crown size={18} className="text-accent" />
