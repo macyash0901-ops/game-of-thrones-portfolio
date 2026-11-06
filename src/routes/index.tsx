@@ -1,23 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { About } from '@/components/About';
+import { Contact } from '@/components/Contact';
+import { Education } from '@/components/Education';
+import { Experience } from '@/components/Experience';
+import { Footer } from '@/components/Footer';
+import { Hero } from '@/components/Hero';
+import { Navbar } from '@/components/Navbar';
+import { Projects } from '@/components/Projects';
+import { ScrollProgress } from '@/components/ScrollProgress';
+import { Skills } from '@/components/Skills';
+import { SoundProvider } from '@/context/SoundContext';
+import { ThemeProvider } from '@/context/ThemeContext';
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <SoundProvider>
+      <ThemeProvider>
+        <ScrollProgress />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
+        <Footer />
+      </ThemeProvider>
+    </SoundProvider>
   );
 }
+
+
+
+export const Route = createFileRoute('/')({
+  head: () => ({ meta: [
+    { title: 'Yash Drall | Full-Stack Software Developer' },
+    { name: 'description', content: 'Yash Drall’s portfolio: production web and mobile applications with React.js, Next.js, Flutter, and Python.' },
+    { property: 'og:title', content: 'Yash Drall | Full-Stack Software Developer' },
+    { property: 'og:description', content: 'Explore Yash Drall’s experience, projects, and full-stack software development expertise.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ] }),
+  component: Index,
+});

@@ -1,0 +1,510 @@
+[
+  {
+    "origin": "source",
+    "device": "desktop",
+    "trigger": "View the work",
+    "result": "#work",
+    "status": "passed"
+  },
+  {
+    "origin": "source",
+    "device": "desktop",
+    "section": "about",
+    "observed": {
+      "y": 1672,
+      "height": 1303.5,
+      "text": "CHAPTER I\n\nA sharp mind builds a stronger realm\n\nFull Stack Developer with 3 years of experience designing, developing, and deploying scalable web and",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-desktop-about.png"
+  },
+  {
+    "origin": "source",
+    "device": "desktop",
+    "section": "experience",
+    "observed": {
+      "y": 3224,
+      "height": 1836.5,
+      "text": "CHAPTER II\n\nEvery stronghold is built by many hands\nFull Stack Developer (React.js, Next.js, Python, Django)\n\nKARMA AYURVEDA PVT. LTD.\n\nSeptember 2025",
+      "reveal": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-desktop-experience.png"
+  },
+  {
+    "origin": "source",
+    "device": "desktop",
+    "section": "work",
+    "observed": {
+      "y": 5041,
+      "height": 1780.5,
+      "text": "CHAPTER III\n\nThe work speaks for the builder\n\nA record of the realms, tools, and systems brought from first spark to working kingdom.\n\n01\n\nPRIVATE AI ",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-desktop-work.png"
+  },
+  {
+    "origin": "source",
+    "device": "desktop",
+    "section": "skills",
+    "observed": {
+      "y": 6039,
+      "height": 998.25,
+      "text": "CHAPTER IV\n\nThe armory\n\nEvery craft has its weapon: frontend, mobile, backend, cloud, and AI, sharpened to ship complete products.\n\nFRONTEND\nReact.js\n",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "0.997415",
+        "0.988668"
+      ]
+    },
+    "screenshot": "source-desktop-skills.png"
+  },
+  {
+    "origin": "source",
+    "device": "desktop",
+    "section": "education",
+    "observed": {
+      "y": 6718,
+      "height": 679,
+      "text": "CHAPTER V\n\nNo throne stands without foundations\nBachelor of Technology (Biomedical Engineering)\n\nDeenbandhu Chhotu Ram University of Science and Techn",
+      "reveal": [
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-desktop-education.png"
+  },
+  {
+    "origin": "source",
+    "device": "desktop",
+    "section": "contact",
+    "observed": {
+      "y": 7734,
+      "height": 1046.75,
+      "text": "FINAL CHAPTER\n\nWhen the realm calls, answer\n\nBring the signal, the challenge, or the first spark of an idea. Together, we can give it walls, wings, an",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-desktop-contact.png"
+  },
+  {
+    "origin": "source",
+    "device": "desktop",
+    "trigger": "theme, sound, back to top",
+    "status": "passed",
+    "errors": []
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "trigger": "phone menu Work",
+    "result": "#work",
+    "status": "passed"
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "section": "about",
+    "observed": {
+      "y": 2418,
+      "height": 2382.25,
+      "text": "CHAPTER I\n\nA sharp mind builds a stronger realm\n\nFull Stack Developer with 3 years of experience designing, developing, and deploying scalable web and",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-phone-about.png"
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "section": "experience",
+    "observed": {
+      "y": 5513,
+      "height": 3808.25,
+      "text": "CHAPTER II\n\nEvery stronghold is built by many hands\nFull Stack Developer (React.js, Next.js, Python, Django)\n\nKARMA AYURVEDA PVT. LTD.\n\nSeptember 2025",
+      "reveal": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-phone-experience.png"
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "section": "work",
+    "observed": {
+      "y": 9359,
+      "height": 3883.75,
+      "text": "CHAPTER III\n\nThe work speaks for the builder\n\nA record of the realms, tools, and systems brought from first spark to working kingdom.\n\n01\n\nPRIVATE AI ",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "screenshot": "source-phone-work.png"
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "section": "skills",
+    "observed": {
+      "y": 12440,
+      "height": 2277.75,
+      "text": "CHAPTER IV\n\nThe armory\n\nEvery craft has its weapon: frontend, mobile, backend, cloud, and AI, sharpened to ship complete products.\n\nFRONTEND\nReact.js\n",
+      "reveal": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "1",
+        "0.999971",
+        "0.995541",
+        "0",
+        "0"
+      ]
+    },
+    "screenshot": "source-phone-skills.png"
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "section": "education",
+    "observed": {
+      "y": 14053,
+      "height": 950,
+      "text": "CHAPTER V\n\nNo throne stands without foundations\nBachelor of Technology (Biomedical Engineering)\n\nDeenbandhu Chhotu Ram University of Science and Techn",
+      "reveal": [
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "source-phone-education.png"
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "section": "contact",
+    "observed": {
+      "y": 14950,
+      "height": 1641,
+      "text": "FINAL CHAPTER\n\nWhen the realm calls, answer\n\nBring the signal, the challenge, or the first spark of an idea. Together, we can give it walls, wings, an",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    "screenshot": "source-phone-contact.png"
+  },
+  {
+    "origin": "source",
+    "device": "phone",
+    "trigger": "theme, sound, back to top",
+    "status": "passed",
+    "errors": []
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "trigger": "View the work",
+    "result": "#work",
+    "status": "passed"
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "section": "about",
+    "observed": {
+      "y": 1640,
+      "height": 1327.5,
+      "text": "CHAPTER I\n\nA sharp mind builds a stronger realm\n\nFull Stack Developer with 3 years of experience designing, developing, and deploying scalable web and",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-desktop-about.png"
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "section": "experience",
+    "observed": {
+      "y": 3160,
+      "height": 1860.5,
+      "text": "CHAPTER II\n\nEvery stronghold is built by many hands\nFull Stack Developer (React.js, Next.js, Python, Django)\n\nKARMA AYURVEDA PVT. LTD.\n\nSeptember 2025",
+      "reveal": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-desktop-experience.png"
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "section": "work",
+    "observed": {
+      "y": 5066,
+      "height": 1804.5,
+      "text": "CHAPTER III\n\nThe work speaks for the builder\n\nA record of the realms, tools, and systems brought from first spark to working kingdom.\n\n01\n\nPRIVATE AI ",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-desktop-work.png"
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "section": "skills",
+    "observed": {
+      "y": 6123,
+      "height": 1010.25,
+      "text": "CHAPTER IV\n\nThe armory\n\nEvery craft has its weapon: frontend, mobile, backend, cloud, and AI, sharpened to ship complete products.\n\nFRONTEND\nReact.js\n",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "0.999918",
+        "0.99631",
+        "0.98623"
+      ]
+    },
+    "screenshot": "preview-desktop-skills.png"
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "section": "education",
+    "observed": {
+      "y": 6826,
+      "height": 703,
+      "text": "CHAPTER V\n\nNo throne stands without foundations\nBachelor of Technology (Biomedical Engineering)\n\nDeenbandhu Chhotu Ram University of Science and Techn",
+      "reveal": [
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-desktop-education.png"
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "section": "contact",
+    "observed": {
+      "y": 7866,
+      "height": 1070.75,
+      "text": "FINAL CHAPTER\n\nWhen the realm calls, answer\n\nBring the signal, the challenge, or the first spark of an idea. Together, we can give it walls, wings, an",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-desktop-contact.png"
+  },
+  {
+    "origin": "preview",
+    "device": "desktop",
+    "trigger": "theme, sound, back to top",
+    "status": "passed",
+    "errors": []
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "trigger": "phone menu Work",
+    "result": "#work",
+    "status": "passed"
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "section": "about",
+    "observed": {
+      "y": 2374,
+      "height": 2382.25,
+      "text": "CHAPTER I\n\nA sharp mind builds a stronger realm\n\nFull Stack Developer with 3 years of experience designing, developing, and deploying scalable web and",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-phone-about.png"
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "section": "experience",
+    "observed": {
+      "y": 5469,
+      "height": 3808.25,
+      "text": "CHAPTER II\n\nEvery stronghold is built by many hands\nFull Stack Developer (React.js, Next.js, Python, Django)\n\nKARMA AYURVEDA PVT. LTD.\n\nSeptember 2025",
+      "reveal": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-phone-experience.png"
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "section": "work",
+    "observed": {
+      "y": 9315,
+      "height": 3883.75,
+      "text": "CHAPTER III\n\nThe work speaks for the builder\n\nA record of the realms, tools, and systems brought from first spark to working kingdom.\n\n01\n\nPRIVATE AI ",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "screenshot": "preview-phone-work.png"
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "section": "skills",
+    "observed": {
+      "y": 12396,
+      "height": 2277.75,
+      "text": "CHAPTER IV\n\nThe armory\n\nEvery craft has its weapon: frontend, mobile, backend, cloud, and AI, sharpened to ship complete products.\n\nFRONTEND\nReact.js\n",
+      "reveal": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "1",
+        "0.999971",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "screenshot": "preview-phone-skills.png"
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "section": "education",
+    "observed": {
+      "y": 14009,
+      "height": 950,
+      "text": "CHAPTER V\n\nNo throne stands without foundations\nBachelor of Technology (Biomedical Engineering)\n\nDeenbandhu Chhotu Ram University of Science and Techn",
+      "reveal": [
+        "1",
+        "1"
+      ]
+    },
+    "screenshot": "preview-phone-education.png"
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "section": "contact",
+    "observed": {
+      "y": 14862,
+      "height": 1641,
+      "text": "FINAL CHAPTER\n\nWhen the realm calls, answer\n\nBring the signal, the challenge, or the first spark of an idea. Together, we can give it walls, wings, an",
+      "reveal": [
+        "1",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    "screenshot": "preview-phone-contact.png"
+  },
+  {
+    "origin": "preview",
+    "device": "phone",
+    "trigger": "theme, sound, back to top",
+    "status": "passed",
+    "errors": []
+  }
+]
