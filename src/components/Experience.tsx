@@ -14,7 +14,7 @@ export function Experience() {
             <li key={entry.company} className="relative pb-16 last:pb-0">
               <Reveal delay={index * 150}>
                 <span className="absolute -left-[37px] top-2 flex h-4 w-4 items-center justify-center md:-left-[53px]" aria-hidden="true">
-                  <span className="h-3 w-3 rounded-full bg-accent shadow-[0_0_16px_rgb(var(--accent))]" />
+                  <span className="h-3 w-3 rounded-full bg-accent timeline-glow" />
                 </span>
 
                 <div className="rounded-2xl border border-line bg-surface/70 p-8 backdrop-blur transition-colors duration-500 hover:border-accent/60 md:p-10">

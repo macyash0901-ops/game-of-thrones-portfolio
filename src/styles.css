@@ -28,8 +28,8 @@
 }
 
 :root {
-  --bg: oklch(0.93800 0.02785 88.753);
-  --surface: oklch(0.96751 0.02205 89.791);
+  --bg: oklch(0.97 0.008 90);
+  --surface: oklch(0.995 0.004 90);
   --ink: oklch(0.22883 0.02067 69.804);
   --muted: oklch(0.44690 0.03602 76.434);
   --line: oklch(0.76431 0.05870 84.418);
@@ -50,8 +50,8 @@
   --bg: oklch(0.14525 0.00213 286.131);
   --surface: oklch(0.18924 0.00619 300.967);
   --ink: oklch(0.91439 0.03367 88.064);
-  --muted: oklch(0.69656 0.03660 84.554);
-  --line: oklch(0.35198 0.02842 84.384);
+  --muted: oklch(0.78 0.021 85);
+  --line: oklch(0.34 0.014 85);
   --accent: oklch(0.72801 0.13798 89.726);
   --crimson: oklch(0.50204 0.16940 27.109);
   color-scheme: dark;
@@ -367,3 +367,59 @@ section[id] { scroll-margin-top: 88px; }
 .contact-error { color: var(--crimson); }
 .contact-success { color: var(--accent); }
 @media(max-width:767px) { #contact a span { overflow-wrap:anywhere; min-width:0; } .hero-3d-orbit-two { width:min(390px,100%); } }
+
+/* Portfolio polish: shared surfaces, legibility, and compact opening composition. */
+:root {
+  --shadow-sigil: 0 24px 64px -24px color-mix(in oklch, var(--accent) 35%, transparent);
+  --shadow-gold: 0 4px 24px color-mix(in oklch, var(--accent) 22%, transparent);
+  --gradient-sigil: linear-gradient(145deg, var(--surface), color-mix(in oklch, var(--surface) 80%, var(--accent)));
+}
+body { letter-spacing: 0; }
+.portfolio-hero { min-height: min(850px, calc(100svh - 44px)); padding-block: 120px 72px; }
+.hero-layout { grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 32px; }
+.hero-title { font-size: 64px; line-height: 1.1; }
+.hero-copy > p { margin-top: 20px; }
+.hero-copy > p:first-child { margin-top: 0; margin-bottom: 20px; }
+.hero-copy > div { margin-top: 28px; }
+.hero-stats { margin-top: 32px; padding-top: 24px; }
+.hero-stats dd { font-size: 32px; }
+.hero-stats p { font-size: 16px; line-height: 1.3; }
+.hero-photo, .dark .hero-photo { opacity: .52; filter: saturate(.7) contrast(1.05); }
+.hero-image-vignette { background: linear-gradient(90deg, color-mix(in oklch, var(--bg) 96%, transparent), color-mix(in oklch, var(--bg) 78%, transparent) 44%, color-mix(in oklch, var(--bg) 24%, transparent)); }
+.hero-cta-shadow, .sigil-crown-shadow, .timeline-glow { box-shadow: var(--shadow-gold); }
+.sigil-surface { background: var(--gradient-sigil); box-shadow: var(--shadow-sigil); }
+section:not(#top) { padding-block: 88px; }
+section:not(#top) > div > div:first-child { margin-bottom: 48px; }
+section:nth-of-type(even):not(#top) { background: color-mix(in oklch, var(--surface) 32%, var(--bg)); }
+section article, section form, section .tilt-card, #skills .reveal > div, #experience .reveal > div, #contact .reveal > div { border-radius: 8px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.sound-control[data-playing='true'] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+#mobile-menu { max-height: min(384px, calc(100svh - 80px)); overflow-y: auto; }
+#mobile-menu.inert, #mobile-menu[inert] { max-height: 0; }
+@media (max-width: 1100px) and (min-width: 768px) {
+  header nav > ul { gap: 16px; }
+  header .nav-link { font-size: 11px; letter-spacing: .08em; }
+  .hero-title { font-size: 56px; }
+  .hero-layout { gap: 12px; }
+  .hero-copy > p { font-size: 18px; }
+  .hero-sigil { transform: scale(.85); }
+}
+@media (max-width: 767px) {
+  .portfolio-hero { min-height: auto; padding-block: 112px 56px; }
+  .hero-layout { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .hero-title { font-size: 44px; }
+  .hero-copy > p { font-size: 18px; margin-top: 16px; }
+  .hero-copy > p:first-child { font-size: 11px; letter-spacing: .18em; }
+  .hero-copy > p:nth-of-type(2) { font-size: 15px; letter-spacing: .08em; }
+  .hero-copy > div { margin-top: 24px; gap: 10px; }
+  .hero-copy > div a { padding: 12px 16px; font-size: 11px; letter-spacing: .08em; }
+  .hero-stats { margin-top: 28px; padding-top: 20px; }
+  .hero-stats dd { font-size: 26px; }
+  .hero-stats p { font-size: 13px; }
+  .hero-sigil { display: none; }
+  .hero-scroll { display: none; }
+  section:not(#top) { padding-block: 64px; }
+  section h2 { font-size: 30px; }
+  section h3 { overflow-wrap: anywhere; }
+  .hero-image-vignette { background: color-mix(in oklch, var(--bg) 82%, transparent); }
+}
