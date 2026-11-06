@@ -26,8 +26,10 @@ export function Hero() {
       <Embers />
 
       <div className="hero-layout relative z-10 mx-auto grid w-full max-w-6xl items-center px-6">
-        <div className="hero-copy">
+        <div className="hero-motto col-span-full flex justify-center">
           <ValyrianText text="VALAR MORGHULIS" />
+        </div>
+        <div className="hero-copy">
           <p className="mb-6 flex items-center gap-4 font-display text-xs uppercase tracking-[0.35em] text-accent">
             <span className="hairline h-px w-12" />
             {profile.title}
