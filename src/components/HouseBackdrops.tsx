@@ -22,7 +22,7 @@ export function HouseBackdrops() {
       .map(([id, house, url]) => {
         const el = document.getElementById(id);
         if (!el) return null;
-        el.dataset.house = house;
+        el.dataset['house'] = house;
         el.style.setProperty('--house-bg', `url("${url}")`);
         return el;
       })
