@@ -13,21 +13,22 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
   const enabledRef = useRef(DEFAULT_SOUND_ENABLED);
   const audioRef = useRef<PortfolioAudio | null>(null);
+  const start = useCallback(async () => {
+    if (!enabledRef.current) return;
+    try {
+      if (!audioRef.current) audioRef.current = new PortfolioAudio();
+      const started = await audioRef.current.start();
+      if (enabledRef.current) setPlaying(started);
+      else audioRef.current.stop();
+    } catch { setPlaying(false); }
+  }, []);
   useEffect(() => {
     let preference = DEFAULT_SOUND_ENABLED;
     try { preference = soundPreference(localStorage.getItem(SOUND_STORAGE_KEY)); } catch { /* Storage may be blocked. */ }
     enabledRef.current = preference;
     setEnabled(preference);
-  }, []);
-  const start = useCallback(async () => {
-    if (!enabledRef.current) return;
-    try {
-      if (!audioRef.current) audioRef.current = new PortfolioAudio();
-      await audioRef.current.start();
-      if (enabledRef.current) setPlaying(true);
-      else audioRef.current.stop();
-    } catch { setPlaying(false); }
-  }, []);
+    if (preference) void start();
+  }, [start]);
   const playSound = useCallback((name: SoundName) => {
     if (enabledRef.current) audioRef.current?.play(name);
   }, []);
@@ -40,8 +41,9 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     else { audioRef.current?.stop(); setPlaying(false); }
   }, [start]);
   useEffect(() => {
-    // Browsers require a genuine interaction before Web Audio can be heard.
+    // Retry blocked autoplay on the first genuine interaction, not just the toggle.
     const activate = (event: Event) => {
+      if (!event.isTrusted) return;
       if (event instanceof KeyboardEvent && !['Enter', ' ', 'Tab'].includes(event.key)) return;
       void start().then(() => {
         if (!(event.target instanceof Element)) return;

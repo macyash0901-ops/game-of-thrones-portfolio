@@ -16,7 +16,7 @@ describe('Uploaded background music', () => {
   afterEach(() => vi.unstubAllGlobals());
 
   it('repeats the uploaded track and pauses when muted', async () => {
-    const music = { loop: false, preload: '', crossOrigin: '', play: vi.fn().mockResolvedValue(undefined), pause: vi.fn() };
+    const music = { loop: false, paused: false, preload: '', crossOrigin: '', play: vi.fn().mockResolvedValue(undefined), pause: vi.fn() };
     const node = { gain: { value: 0 }, threshold: { value: 0 }, ratio: { value: 0 }, connect: vi.fn().mockReturnThis() };
     vi.stubGlobal('Audio', class { constructor() { return music; } });
     vi.stubGlobal('AudioContext', class {
@@ -29,7 +29,7 @@ describe('Uploaded background music', () => {
     });
     const audio = new PortfolioAudio();
     expect(music.loop).toBe(true);
-    await audio.start();
+    expect(await audio.start()).toBe(true);
     expect(music.play).toHaveBeenCalledOnce();
     audio.stop();
     expect(music.pause).toHaveBeenCalledOnce();

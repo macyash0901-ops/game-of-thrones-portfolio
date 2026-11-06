@@ -34,12 +34,13 @@ export class PortfolioAudio {
   }
 
   async start() {
-    if (this.context.state === 'closed') return;
+    if (this.context.state === 'closed') return false;
     this.active = true;
-    await this.context.resume();
-    if (!this.active || this.context.state !== 'running') return;
-    await this.music.play();
+    // Issue both requests immediately, preserving the browser's user-gesture
+    // activation when this is a retry after blocked autoplay.
+    await Promise.all([this.context.resume(), this.music.play()]);
     if (!this.active) this.music.pause();
+    return this.active && this.context.state === 'running' && !this.music.paused;
   }
 
   stop() {

@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from 'react';
+import { resetPortfolioScroll } from '@/lib/portfolio-navigation';
 import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
 import { Education } from '@/components/Education';
@@ -13,6 +15,11 @@ import { SoundProvider } from '@/context/SoundContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 
 function Index() {
+  useEffect(() => {
+    resetPortfolioScroll();
+    const frame = requestAnimationFrame(resetPortfolioScroll);
+    return () => cancelAnimationFrame(frame);
+  }, []);
   return (
     <SoundProvider>
       <ThemeProvider>
