@@ -484,3 +484,4 @@ section[data-house]::after { background: radial-gradient(ellipse at center, colo
 .sr { opacity: 0; transform: translate3d(0, 28px, 0) scale(.98); filter: blur(4px); transition: opacity .8s cubic-bezier(.2,.65,.3,1), transform .8s cubic-bezier(.2,.65,.3,1), filter .8s ease; transition-delay: var(--sr-delay, 0ms); }
 .sr.sr-in { opacity: 1; transform: none; filter: none; }
 .hero-copy > .valyrian-scene { display: flex; justify-content: center; text-align: center; }
+.hero-motto .valyrian-scene { margin: 0; } .hero-motto { margin-bottom: 8px; }
