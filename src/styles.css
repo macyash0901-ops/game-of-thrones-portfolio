@@ -480,3 +480,7 @@ section[data-house]::after { background: radial-gradient(ellipse at center, colo
 :root:not(.dark) section[data-house]::before { filter: saturate(1) brightness(.78) contrast(1.05); }
 :root:not(.dark) section[data-house]::after { background: radial-gradient(ellipse at center, color-mix(in oklch, var(--house-base) 30%, transparent), color-mix(in oklch, var(--house-base) 60%, transparent) 100%), linear-gradient(to bottom, var(--house-base) 0, transparent 16%, transparent 84%, var(--house-base) 100%); }
 :root:not(.dark) section[data-house] { --surface: color-mix(in oklch, var(--house-base) 86%, transparent); }
+/* Scroll reveal for all section content. */
+.sr { opacity: 0; transform: translate3d(0, 28px, 0) scale(.98); filter: blur(4px); transition: opacity .8s cubic-bezier(.2,.65,.3,1), transform .8s cubic-bezier(.2,.65,.3,1), filter .8s ease; transition-delay: var(--sr-delay, 0ms); }
+.sr.sr-in { opacity: 1; transform: none; filter: none; }
+.hero-copy > .valyrian-scene { display: flex; justify-content: center; text-align: center; }

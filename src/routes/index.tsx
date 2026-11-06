@@ -8,6 +8,7 @@ import { Experience } from '@/components/Experience';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
 import { HouseBackdrops } from '@/components/HouseBackdrops';
+import { ScrollReveal } from '@/components/ScrollReveal';
 import { Navbar } from '@/components/Navbar';
 import { Projects } from '@/components/Projects';
 import { ScrollProgress } from '@/components/ScrollProgress';
@@ -26,6 +27,7 @@ function Index() {
       <ThemeProvider>
         <ScrollProgress />
         <HouseBackdrops />
+        <ScrollReveal />
       <Navbar />
       <main>
         <Hero />
