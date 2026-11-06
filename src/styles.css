@@ -373,6 +373,14 @@ section[id] { scroll-margin-top: 88px; }
   --shadow-sigil: 0 24px 64px -24px color-mix(in oklch, var(--accent) 35%, transparent);
   --shadow-gold: 0 4px 24px color-mix(in oklch, var(--accent) 22%, transparent);
   --gradient-sigil: linear-gradient(145deg, var(--surface), color-mix(in oklch, var(--surface) 80%, var(--accent)));
+  --hero-photo-filter: saturate(1.05) brightness(1.16);
+  --hero-overlay: linear-gradient(90deg, color-mix(in oklch, var(--bg) 94%, transparent), color-mix(in oklch, var(--bg) 84%, transparent) 32%, color-mix(in oklch, var(--bg) 30%, transparent) 58%, color-mix(in oklch, var(--bg) 8%, transparent));
+  --hero-mobile-overlay: linear-gradient(90deg, color-mix(in oklch, var(--bg) 88%, transparent), color-mix(in oklch, var(--bg) 58%, transparent));
+}
+.dark {
+  --hero-photo-filter: saturate(1.05) brightness(1.24);
+  --hero-overlay: linear-gradient(90deg, color-mix(in oklch, var(--bg) 88%, transparent), color-mix(in oklch, var(--bg) 76%, transparent) 32%, color-mix(in oklch, var(--bg) 20%, transparent) 58%, transparent);
+  --hero-mobile-overlay: linear-gradient(90deg, color-mix(in oklch, var(--bg) 78%, transparent), color-mix(in oklch, var(--bg) 48%, transparent));
 }
 body { letter-spacing: 0; }
 .portfolio-hero { min-height: min(850px, calc(100svh - 44px)); padding-block: 120px 72px; }
@@ -384,8 +392,9 @@ body { letter-spacing: 0; }
 .hero-stats { margin-top: 32px; padding-top: 24px; }
 .hero-stats dd { font-size: 32px; }
 .hero-stats p { font-size: 16px; line-height: 1.3; }
-.hero-photo, .dark .hero-photo { opacity: .52; filter: saturate(.7) contrast(1.05); }
-.hero-image-vignette { background: linear-gradient(90deg, color-mix(in oklch, var(--bg) 96%, transparent), color-mix(in oklch, var(--bg) 78%, transparent) 44%, color-mix(in oklch, var(--bg) 24%, transparent)); }
+.hero-photo, .dark .hero-photo { opacity: 1; filter: var(--hero-photo-filter); object-position: center 38%; mask-image: none; }
+.hero-image-vignette { background: var(--hero-overlay); }
+.hero-image-bottom { background: linear-gradient(to top, var(--bg), color-mix(in oklch, var(--bg) 45%, transparent) 18%, transparent 48%); }
 .hero-cta-shadow, .sigil-crown-shadow, .timeline-glow { box-shadow: var(--shadow-gold); }
 .sigil-surface { background: var(--gradient-sigil); box-shadow: var(--shadow-sigil); }
 section:not(#top) { padding-block: 88px; }
@@ -421,5 +430,5 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   section:not(#top) { padding-block: 64px; }
   section h2 { font-size: 30px; }
   section h3 { overflow-wrap: anywhere; }
-  .hero-image-vignette { background: color-mix(in oklch, var(--bg) 82%, transparent); }
+  .hero-image-vignette { background: var(--hero-mobile-overlay); }
 }
