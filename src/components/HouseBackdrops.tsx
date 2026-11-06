@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
-import stark from '@/assets/house-stark.jpg.asset.json';
-import lannister from '@/assets/house-lannister.jpg.asset.json';
-import baratheon from '@/assets/house-baratheon.jpg.asset.json';
-import greyjoy from '@/assets/house-greyjoy.jpg.asset.json';
-import targaryen from '@/assets/house-targaryen.jpg.asset.json';
-import banners from '@/assets/house-banners.jpg.asset.json';
+import stark from '@/assets/bgstark.jpeg';
+import lannister from '@/assets/bglannister.jpg';
+import baratheon from '@/assets/bgbaratheon.jpeg';
+import greyjoy from '@/assets/Antique Gold Kraken Heraldic Banner.png';
+import targaryen from '@/assets/gotbg1.jpg';
+import banners from '@/assets/Storm-Battered Heraldry Above the Ruins.png';
 
 const houses: Array<[string, string, string]> = [
-  ['about', 'stark', stark.url],
-  ['experience', 'lannister', lannister.url],
-  ['work', 'baratheon', baratheon.url],
-  ['skills', 'greyjoy', greyjoy.url],
-  ['education', 'targaryen', targaryen.url],
-  ['contact', 'banners', banners.url],
+  ['about', 'lannister', lannister],
+  ['experience', 'baratheon', baratheon],
+  ['work', 'greyjoy', greyjoy],
+  ['skills', 'stark', stark],
+  ['education', 'targaryen', targaryen],
+  ['contact', 'banners', banners],
 ];
 
 /** Applies a house backdrop + palette to each section and zooms it with scroll progress (reverses on scroll up). */
@@ -27,15 +27,22 @@ export function HouseBackdrops() {
         return el;
       })
       .filter(Boolean) as HTMLElement[];
+    const hero = document.getElementById('top');
+    const heroImage = hero?.querySelector<HTMLElement>('.hero-photo');
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let frame = 0;
     const update = () => {
       frame = 0;
       const vh = window.innerHeight;
+      if (hero && heroImage) {
+        const rect = hero.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, (vh - rect.bottom) / (vh * 0.75)));
+        heroImage.style.setProperty('--hero-scroll-zoom', reduce ? '1.05' : (1 + progress * 0.3).toFixed(4));
+      }
       for (const el of nodes) {
         const r = el.getBoundingClientRect();
         const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-        el.style.setProperty('--house-zoom', reduce ? '1.05' : (1.02 + p * 0.22).toFixed(4));
+        el.style.setProperty('--house-zoom', reduce ? '1.05' : (1.05 + p * 0.35).toFixed(4));
       }
     };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };

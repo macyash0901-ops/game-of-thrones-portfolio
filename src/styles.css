@@ -349,10 +349,14 @@
   }
 
   .reveal,
-  .split-char {
+  .split-char,
+  .sr,
+  .hero-photo,
+  .hero-copy > :not(.hero-title) {
     opacity: 1;
     transform: none;
     filter: none;
+    animation: none;
   }
 }
 
@@ -406,7 +410,16 @@ body { letter-spacing: 0; }
 .hero-stats { margin-top: 32px; padding-top: 24px; }
 .hero-stats dd { font-size: 32px; }
 .hero-stats p { font-size: 16px; line-height: 1.3; }
-.hero-photo, .dark .hero-photo { opacity: 1; filter: var(--hero-photo-filter); object-position: center 38%; mask-image: none; }
+.hero-photo, .dark .hero-photo { opacity: 1; filter: var(--hero-photo-filter); object-position: center 38%; mask-image: none; transform: scale(var(--hero-scroll-zoom, 1)); transform-origin: center 38%; will-change: transform; animation: hero-image-enter 1.4s cubic-bezier(.2,.65,.3,1) both; }
+.hero-copy > :not(.hero-title) { opacity: 0; animation: hero-content-enter .8s cubic-bezier(.2,.65,.3,1) both; }
+.hero-copy > :nth-child(1) { animation-delay: .12s; }
+.hero-copy > :nth-child(3) { animation-delay: .36s; }
+.hero-copy > :nth-child(4) { animation-delay: .5s; }
+.hero-copy > :nth-child(5) { animation-delay: .64s; }
+.hero-copy > :nth-child(6) { animation-delay: .78s; }
+.hero-copy > :nth-child(7) { animation-delay: .92s; }
+@keyframes hero-image-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-content-enter { from { opacity: 0; transform: translate3d(0, 24px, 0); filter: blur(5px); } to { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); } }
 .hero-image-vignette { background: var(--hero-overlay); }
 .hero-image-bottom { background: linear-gradient(to top, var(--bg), color-mix(in oklch, var(--bg) 45%, transparent) 18%, transparent 48%); }
 .hero-cta-shadow, .sigil-crown-shadow, .timeline-glow { box-shadow: var(--shadow-gold); }
@@ -450,7 +463,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 /* House backdrops: per-section image, palette, and scroll-linked zoom. */
 section[data-house] { position: relative; isolation: isolate; overflow: hidden; background: var(--house-base) !important; color: var(--ink); --surface: color-mix(in oklch, var(--house-base) 72%, transparent); }
 .dark section[data-house] { color-scheme: dark; }
-section[data-house]::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--house-bg) center / cover no-repeat; transform: scale(var(--house-zoom, 1.02)); transform-origin: center; will-change: transform; filter: saturate(1.05) brightness(.8); mask-image: linear-gradient(to bottom, transparent 0, black 14%, black 86%, transparent 100%); }
+section[data-house]::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--house-bg) center / cover no-repeat; transform: scale(var(--house-zoom, 1.04)); transform-origin: center; will-change: transform; filter: saturate(1.05) brightness(.8); mask-image: linear-gradient(to bottom, transparent 0, black 14%, black 86%, transparent 100%); }
 section[data-house]::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at center, color-mix(in oklch, var(--house-base) 45%, transparent), color-mix(in oklch, var(--house-base) 78%, transparent) 100%), linear-gradient(to bottom, var(--house-base) 0, transparent 16%, transparent 84%, var(--house-base) 100%); }
 section[data-house] h2, section[data-house] h3 { text-shadow: 0 2px 14px oklch(0 0 0 / .6); }
 section[data-house] .text-crimson { color: var(--crimson); }
@@ -460,7 +473,7 @@ section[data-house] .text-crimson { color: var(--crimson); }
 .dark [data-house='greyjoy']   { --house-base: oklch(0.17 0.03 200); --ink: oklch(0.95 0.03 95);  --muted: oklch(0.84 0.03 190); --line: oklch(0.48 0.05 190); --accent: oklch(0.8 0.13 85);   --crimson: oklch(0.78 0.08 190); }
 .dark [data-house='targaryen'] { --house-base: oklch(0.14 0.03 20);  --ink: oklch(0.95 0.02 60);  --muted: oklch(0.83 0.03 40);  --line: oklch(0.45 0.12 25);  --accent: oklch(0.68 0.21 28);  --crimson: oklch(0.78 0.14 45); }
 .dark [data-house='banners']   { --house-base: oklch(0.15 0.02 30);  --ink: oklch(0.96 0.02 80);  --muted: oklch(0.85 0.03 70);  --line: oklch(0.5 0.1 50);   --accent: oklch(0.82 0.15 75);  --crimson: oklch(0.7 0.19 30); }
-section[data-house] *, section[data-house] { transition: color .6s ease, border-color .6s ease, background-color .6s ease; }
+section[data-house] :not(.sr):not(.reveal):not(.tilt-card), section[data-house] { transition: color .6s ease, border-color .6s ease, background-color .6s ease; }
 
 /* Light theme house palettes: parchment-washed art with dark, house-tinted ink. */
 [data-house] { --house-wash: 62%; }
@@ -477,7 +490,7 @@ section[data-house]::after { background: radial-gradient(ellipse at center, colo
 /* Light mode: let house art read clearly. */
 [data-house] { --house-wash: 30%; }
 .dark [data-house] { --house-wash: 45%; }
-:root:not(.dark) section[data-house]::before { filter: saturate(1) brightness(.78) contrast(1.05); }
+:root:not(.dark) section[data-house]::before { filter: saturate(1.05) brightness(.68) contrast(1.08); }
 :root:not(.dark) section[data-house]::after { background: radial-gradient(ellipse at center, color-mix(in oklch, var(--house-base) 30%, transparent), color-mix(in oklch, var(--house-base) 60%, transparent) 100%), linear-gradient(to bottom, var(--house-base) 0, transparent 16%, transparent 84%, var(--house-base) 100%); }
 :root:not(.dark) section[data-house] { --surface: color-mix(in oklch, var(--house-base) 86%, transparent); }
 /* Scroll reveal for all section content. */

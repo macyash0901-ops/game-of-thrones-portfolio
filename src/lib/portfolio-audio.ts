@@ -1,4 +1,4 @@
-import musicAsset from '@/assets/portfolio-music.mp3.asset.json';
+import musicUrl from '@/assets/videoplayback.webm';
 
 export const DEFAULT_SOUND_ENABLED = true;
 
@@ -11,6 +11,7 @@ export class PortfolioAudio {
   private music: HTMLAudioElement;
   private musicSource: MediaElementAudioSourceNode;
   private active = false;
+  private restartTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
     this.context = new AudioContext();
@@ -20,27 +21,60 @@ export class PortfolioAudio {
     compressor.threshold.value = -18;
     compressor.ratio.value = 4;
     this.master.connect(compressor).connect(this.context.destination);
-    this.music = new Audio(musicAsset.url);
-    this.music.loop = true;
+    this.music = new Audio(musicUrl);
+    this.music.loop = false;
     this.music.preload = 'auto';
     this.music.crossOrigin = 'anonymous';
     this.musicSource = this.context.createMediaElementSource(this.music);
     this.musicSource.connect(this.master);
+    this.music.addEventListener('ended', this.scheduleRestart);
   }
 
-  async start() {
+  async start(userGesture = false) {
     if (this.context.state === 'closed') return false;
     this.active = true;
-    // Issue both requests immediately, preserving the browser's user-gesture
-    // activation when this is a retry after blocked autoplay.
-    await Promise.all([this.context.resume(), this.music.play()]);
+    this.clearRestartTimer();
+    const shouldResume = this.context.state !== 'running';
+
+    const results = await Promise.allSettled([
+      shouldResume && userGesture ? this.context.resume() : Promise.resolve(),
+      this.music.play(),
+    ]);
+    const failures = results
+      .filter((result): result is PromiseRejectedResult => result.status === 'rejected')
+      .map((result) => result.reason);
+    if (failures.length > 0) {
+      this.music.pause();
+      if (failures.some((error) => error instanceof DOMException && error.name === 'NotAllowedError')) return false;
+      throw new AggregateError(failures, 'Unable to start portfolio audio');
+    }
+
     if (!this.active) this.music.pause();
     return this.active && this.context.state === 'running' && !this.music.paused;
   }
 
   stop() {
     this.active = false;
+    this.clearRestartTimer();
     this.music.pause();
+  }
+
+  private scheduleRestart = () => {
+    if (!this.active) return;
+    this.clearRestartTimer();
+    this.restartTimer = setTimeout(() => {
+      this.restartTimer = null;
+      if (this.active) {
+        void this.start().catch((error: unknown) => {
+          console.error('Unable to restart portfolio music.', error);
+        });
+      }
+    }, 5000);
+  };
+
+  private clearRestartTimer() {
+    if (this.restartTimer) clearTimeout(this.restartTimer);
+    this.restartTimer = null;
   }
 
   play(name: SoundName) {
@@ -62,6 +96,7 @@ export class PortfolioAudio {
 
   dispose() {
     this.stop();
+    this.music.removeEventListener('ended', this.scheduleRestart);
     this.music.removeAttribute('src');
     this.music.load();
     this.musicSource.disconnect();

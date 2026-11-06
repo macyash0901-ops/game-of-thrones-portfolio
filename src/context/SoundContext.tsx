@@ -6,14 +6,17 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
   const enabledRef = useRef(DEFAULT_SOUND_ENABLED);
   const audioRef = useRef<PortfolioAudio | null>(null);
-  const start = useCallback(async () => {
+  const start = useCallback(async (userGesture = false) => {
     if (!enabledRef.current) return;
     try {
       if (!audioRef.current) audioRef.current = new PortfolioAudio();
-      const started = await audioRef.current.start();
+      const started = await audioRef.current.start(userGesture);
       if (enabledRef.current) setPlaying(started);
       else audioRef.current.stop();
-    } catch { setPlaying(false); }
+    } catch (error) {
+      setPlaying(false);
+      console.error('Unable to start portfolio audio.', error);
+    }
   }, []);
   useEffect(() => {
     void start();
@@ -25,7 +28,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     const next = !enabledRef.current;
     enabledRef.current = next;
     setEnabled(next);
-    if (next) void start();
+    if (next) void start(true);
     else { audioRef.current?.stop(); setPlaying(false); }
   }, [start]);
   useEffect(() => {
@@ -33,7 +36,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     const activate = (event: Event) => {
       if (!event.isTrusted) return;
       if (event instanceof KeyboardEvent && !['Enter', ' ', 'Tab'].includes(event.key)) return;
-      void start().then(() => {
+      void start(true).then(() => {
         if (!(event.target instanceof Element)) return;
         const sound = event.target.closest<HTMLElement>('[data-sfx]')?.dataset['sfx'];
         if (sound === 'click' || sound === 'sword') playSound(sound);

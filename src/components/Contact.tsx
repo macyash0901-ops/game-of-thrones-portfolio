@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { FormEvent, useState } from 'react';
-import { ArrowUpRight, Check, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowUpRight, Check, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { profile } from '@/data/portfolio';
@@ -75,6 +75,11 @@ export function Contact() {
                 <a href={profile.phoneHref} className="flex items-center gap-4 text-lg text-muted transition-colors hover:text-accent">
                   <Phone size={19} className="text-accent" />
                   <span>{profile.phone}</span>
+                </a>
+                <a data-sfx="click" href={profile.linkedinHref} target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-lg text-muted transition-colors hover:text-accent">
+                  <Linkedin size={19} className="text-accent" />
+                  <span>{profile.linkedin}</span>
+                  <ArrowUpRight size={15} className="ml-auto opacity-0 transition-opacity group-hover:opacity-100" />
                 </a>
                 <div className="flex items-center gap-4 text-lg text-muted">
                   <MapPin size={19} className="text-accent" />
