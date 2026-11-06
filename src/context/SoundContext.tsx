@@ -1,13 +1,6 @@
-import { createContext, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { DEFAULT_SOUND_ENABLED, PortfolioAudio, type SoundName } from '@/lib/portfolio-audio';
-export type { SoundName } from '@/lib/portfolio-audio';
-interface SoundContextValue {
-  enabled: boolean;
-  playing: boolean;
-  toggleSound: () => void;
-  playSound: (name: SoundName) => void;
-}
-export const SoundContext = createContext<SoundContextValue | null>(null);
+import { SoundContext } from '@/context/sound-state';
 export function SoundProvider({ children }: { children: ReactNode }) {
   const [enabled, setEnabled] = useState(DEFAULT_SOUND_ENABLED);
   const [playing, setPlaying] = useState(false);

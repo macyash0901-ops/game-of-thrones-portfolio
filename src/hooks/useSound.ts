@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { SoundContext, type SoundName } from '@/context/SoundContext';
+import { SoundContext } from '@/context/sound-state';
+import type { SoundName } from '@/lib/portfolio-audio';
 
 export function useSound() {
   const context = useContext(SoundContext);
