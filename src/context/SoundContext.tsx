@@ -157,7 +157,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       }
       if (!(event.target instanceof Element)) return;
       const element = event.target.closest<HTMLElement>('[data-sfx]');
-      const sound = element?.dataset.sfx as SoundName | undefined;
+      const sound = element?.dataset['sfx'] as SoundName | undefined;
       if (sound) playSound(sound);
     };
 
