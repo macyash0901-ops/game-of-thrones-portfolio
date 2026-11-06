@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { DEFAULT_SOUND_ENABLED, PortfolioAudio, SOUND_STORAGE_KEY, soundPreference, type SoundName } from '@/lib/portfolio-audio';
+import { DEFAULT_SOUND_ENABLED, PortfolioAudio, type SoundName } from '@/lib/portfolio-audio';
 export type { SoundName } from '@/lib/portfolio-audio';
 interface SoundContextValue {
   enabled: boolean;
@@ -23,11 +23,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     } catch { setPlaying(false); }
   }, []);
   useEffect(() => {
-    let preference = DEFAULT_SOUND_ENABLED;
-    try { preference = soundPreference(localStorage.getItem(SOUND_STORAGE_KEY)); } catch { /* Storage may be blocked. */ }
-    enabledRef.current = preference;
-    setEnabled(preference);
-    if (preference) void start();
+    void start();
   }, [start]);
   const playSound = useCallback((name: SoundName) => {
     if (enabledRef.current) audioRef.current?.play(name);
@@ -36,7 +32,6 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     const next = !enabledRef.current;
     enabledRef.current = next;
     setEnabled(next);
-    try { localStorage.setItem(SOUND_STORAGE_KEY, next ? 'on' : 'off'); } catch { /* Keep the in-memory preference. */ }
     if (next) void start();
     else { audioRef.current?.stop(); setPlaying(false); }
   }, [start]);
