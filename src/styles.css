@@ -363,6 +363,7 @@
 @keyframes scroll-cue { 0%{transform:translateY(0);opacity:0} 40%{opacity:1} 100%{transform:translateY(14px);opacity:0} }
 @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
 section[id] { scroll-margin-top: 88px; }
+.gold-gradient-text .split-char { color: var(--accent); }
 .contact-error { color: var(--crimson); }
 .contact-success { color: var(--accent); }
 @media(max-width:767px) { #contact a span { overflow-wrap:anywhere; min-width:0; } .hero-3d-orbit-two { width:min(390px,100%); } }
