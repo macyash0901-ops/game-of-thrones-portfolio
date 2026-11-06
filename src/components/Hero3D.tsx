@@ -29,10 +29,10 @@ export function Hero3D() {
     >
       <div className="hero-3d-orbit hero-3d-orbit-one" />
       <div className="hero-3d-orbit hero-3d-orbit-two" />
-      <div className="hero-3d-card absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-accent/60 bg-[linear-gradient(145deg,rgb(var(--surface)/.92),rgb(var(--bg)/.72))] shadow-[0_30px_80px_-30px_rgb(var(--accent)/.85)]">
+      <div className="hero-3d-card absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-accent/60 sigil-surface">
         <div className="absolute inset-3 rounded-[1.5rem] border border-accent/20" />
         <div className="relative flex h-full flex-col items-center justify-center gap-5 text-center">
-          <div className="hero-3d-crown flex h-20 w-20 items-center justify-center rounded-full border border-accent/70 bg-accent/10 text-accent shadow-[0_0_32px_rgb(var(--accent)/.25)]">
+          <div className="hero-3d-crown flex h-20 w-20 items-center justify-center rounded-full border border-accent/70 bg-accent/10 text-accent sigil-crown-shadow">
             <Crown size={42} strokeWidth={1.2} />
           </div>
           <div>
