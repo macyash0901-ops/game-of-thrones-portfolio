@@ -474,3 +474,9 @@ section[data-house]::after { background: radial-gradient(ellipse at center, colo
 [data-house='greyjoy']   { --house-base: oklch(0.93 0.02 200); --ink: oklch(0.22 0.04 210); --muted: oklch(0.37 0.04 205); --line: oklch(0.7 0.05 195); --accent: oklch(0.48 0.1 80);   --crimson: oklch(0.38 0.07 210); }
 [data-house='targaryen'] { --house-base: oklch(0.93 0.025 40); --ink: oklch(0.22 0.05 25);  --muted: oklch(0.38 0.06 30);  --line: oklch(0.72 0.08 35); --accent: oklch(0.48 0.18 28);  --crimson: oklch(0.45 0.14 45); }
 [data-house='banners']   { --house-base: oklch(0.94 0.025 70); --ink: oklch(0.22 0.04 40);  --muted: oklch(0.37 0.05 50);  --line: oklch(0.72 0.08 65); --accent: oklch(0.5 0.12 70);   --crimson: oklch(0.43 0.17 28); }
+/* Light mode: let house art read clearly. */
+[data-house] { --house-wash: 30%; }
+.dark [data-house] { --house-wash: 45%; }
+:root:not(.dark) section[data-house]::before { filter: saturate(1) brightness(.78) contrast(1.05); }
+:root:not(.dark) section[data-house]::after { background: radial-gradient(ellipse at center, color-mix(in oklch, var(--house-base) 30%, transparent), color-mix(in oklch, var(--house-base) 60%, transparent) 100%), linear-gradient(to bottom, var(--house-base) 0, transparent 16%, transparent 84%, var(--house-base) 100%); }
+:root:not(.dark) section[data-house] { --surface: color-mix(in oklch, var(--house-base) 86%, transparent); }
