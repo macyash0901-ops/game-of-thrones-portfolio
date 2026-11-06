@@ -36,4 +36,5 @@ use the editor.
 
 - Route looping music and effects through the shared Web Audio engine; attempt playback after hydration, retry browser-blocked autoplay on trusted interaction, pause without resetting on mute, and clean up on unmount.
 - Define shared sound context separately from its provider component so live component refreshes preserve context identity for consumers.
+- Share dimensional opening/closing typography in ValyrianText, using theme-token depth shadows and reduced-motion-safe CSS transforms.
 - Reset initial portfolio scroll and clear stale anchors after hydration; disable router restoration so chapter navigation does not determine a fresh page's opening position.
