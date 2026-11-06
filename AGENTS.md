@@ -34,4 +34,5 @@ use the editor.
 - Preserve the source theme through Tailwind v4 CSS tokens, and restore browser preferences after hydration to keep server rendering safe.
 - Contact messages use the generated Cloud client with insert-only public access; visitors must never be able to read submitted messages.
 
-- Route the looping media track and interaction effects through the shared Web Audio engine; only start it on genuine user interaction, pause without resetting on mute, and clean it up on unmount.
+- Route looping music and effects through the shared Web Audio engine; attempt playback after hydration, retry browser-blocked autoplay on trusted interaction, pause without resetting on mute, and clean up on unmount.
+- Reset initial portfolio scroll and clear stale anchors after hydration; disable router restoration so chapter navigation does not determine a fresh page's opening position.
