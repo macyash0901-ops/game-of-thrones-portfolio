@@ -9,7 +9,7 @@ import banners from '@/assets/house-banners.jpg.asset.json';
 const houses: Array<[string, string, string]> = [
   ['about', 'stark', stark.url],
   ['experience', 'lannister', lannister.url],
-  ['projects', 'baratheon', baratheon.url],
+  ['work', 'baratheon', baratheon.url],
   ['skills', 'greyjoy', greyjoy.url],
   ['education', 'targaryen', targaryen.url],
   ['contact', 'banners', banners.url],
