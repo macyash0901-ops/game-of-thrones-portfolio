@@ -34,4 +34,4 @@ use the editor.
 - Preserve the source theme through Tailwind v4 CSS tokens, and restore browser preferences after hydration to keep server rendering safe.
 - Contact messages use the generated Cloud client with insert-only public access; visitors must never be able to read submitted messages.
 
-- Use the shared Web Audio engine for portfolio sound; only start it on genuine user interaction to comply with browser playback restrictions, and clean it up on unmount.
+- Route the looping media track and interaction effects through the shared Web Audio engine; only start it on genuine user interaction, pause without resetting on mute, and clean it up on unmount.

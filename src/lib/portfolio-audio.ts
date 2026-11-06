@@ -1,3 +1,5 @@
+import musicAsset from '@/assets/portfolio-music.mp3.asset.json';
+
 export const SOUND_STORAGE_KEY = 'yd-sound';
 export const DEFAULT_SOUND_ENABLED = true;
 
@@ -7,12 +9,13 @@ export function soundPreference(stored: string | null): boolean {
 
 export type SoundName = 'click' | 'sword';
 
-/** Midrange harmonics remain audible on laptop and phone speakers. */
+/** Uploaded looping music and interaction effects share one audio engine. */
 export class PortfolioAudio {
   private context: AudioContext;
   private master: GainNode;
-  private ambient: GainNode | null = null;
-  private voices: OscillatorNode[] = [];
+  private music: HTMLAudioElement;
+  private musicSource: MediaElementAudioSourceNode;
+  private active = false;
 
   constructor() {
     this.context = new AudioContext();
@@ -22,46 +25,26 @@ export class PortfolioAudio {
     compressor.threshold.value = -18;
     compressor.ratio.value = 4;
     this.master.connect(compressor).connect(this.context.destination);
+    this.music = new Audio(musicAsset.url);
+    this.music.loop = true;
+    this.music.preload = 'auto';
+    this.music.crossOrigin = 'anonymous';
+    this.musicSource = this.context.createMediaElementSource(this.music);
+    this.musicSource.connect(this.master);
   }
 
   async start() {
     if (this.context.state === 'closed') return;
+    this.active = true;
     await this.context.resume();
-    if (this.ambient || this.context.state !== 'running') return;
-    const now = this.context.currentTime;
-    const ambient = this.context.createGain();
-    ambient.gain.setValueAtTime(0, now);
-    ambient.gain.linearRampToValueAtTime(0.32, now + 0.8);
-    ambient.connect(this.master);
-    this.ambient = ambient;
-    // A restrained, original D-minor pad rather than an inaudible sub-bass drone.
-    [146.83, 220, 293.66, 349.23, 440].forEach((frequency, index) => {
-      const voice = this.context.createOscillator();
-      const level = this.context.createGain();
-      voice.type = index < 2 ? 'triangle' : 'sine';
-      voice.frequency.value = frequency;
-      voice.detune.value = index % 2 ? 3 : -3;
-      level.gain.value = index < 2 ? 0.35 : 0.2;
-      voice.connect(level).connect(ambient);
-      voice.start();
-      this.voices.push(voice);
-    });
+    if (!this.active || this.context.state !== 'running') return;
+    await this.music.play();
+    if (!this.active) this.music.pause();
   }
 
   stop() {
-    const ambient = this.ambient;
-    if (!ambient) return;
-    const now = this.context.currentTime;
-    ambient.gain.cancelScheduledValues(now);
-    ambient.gain.setValueAtTime(ambient.gain.value, now);
-    ambient.gain.linearRampToValueAtTime(0, now + 0.2);
-    this.voices.forEach((voice) => {
-      voice.stop(now + 0.22);
-      voice.onended = () => voice.disconnect();
-    });
-    this.voices = [];
-    this.ambient = null;
-    setTimeout(() => ambient.disconnect(), 300);
+    this.active = false;
+    this.music.pause();
   }
 
   play(name: SoundName) {
@@ -83,6 +66,9 @@ export class PortfolioAudio {
 
   dispose() {
     this.stop();
+    this.music.removeAttribute('src');
+    this.music.load();
+    this.musicSource.disconnect();
     void this.context.close().catch(() => undefined);
   }
 }
