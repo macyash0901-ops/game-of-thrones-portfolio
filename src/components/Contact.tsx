@@ -1,9 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { FormEvent, useState } from 'react';
 import { ArrowUpRight, Check, Mail, MapPin, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { profile } from '@/data/portfolio';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/integrations/supabase/client';
 
 interface FormState {
   name: string;
@@ -29,6 +30,7 @@ export function Contact() {
       return;
     }
 
+    try {
     const { error: insertError } = await supabase.from('contact_messages').insert(form);
     if (insertError) {
       setStatus('error');
@@ -38,6 +40,10 @@ export function Contact() {
 
     setForm(initialForm);
     setStatus('success');
+    } catch {
+      setStatus('error');
+      setError('Your message could not be sent right now. Please email me directly instead.');
+    }
   };
 
   const updateField = (field: keyof FormState, value: string) => {
@@ -97,12 +103,12 @@ export function Contact() {
                 <textarea required maxLength={2000} rows={5} value={form.message} onChange={(event) => updateField('message', event.target.value)} className="mt-2 w-full resize-none border-b border-line bg-transparent px-0 py-3 text-lg leading-relaxed text-ink outline-none transition-colors placeholder:text-muted/60 focus:border-accent" placeholder="Tell me about the kingdom you are building..." />
               </label>
               <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-                <button data-sfx="sword" type="submit" disabled={status === 'sending'} className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-display text-sm uppercase tracking-[0.15em] text-bg transition-transform duration-300 hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60">
+                <Button variant="imported" size="imported" data-sfx="sword" type="submit" disabled={status === 'sending'} className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-display text-sm uppercase tracking-[0.15em] text-bg transition-transform duration-300 hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60">
                   {status === 'sending' ? 'Sending...' : 'Send message'}
                   <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </button>
-                {status === 'success' && <p className="flex items-center gap-2 text-base text-green-700 dark:text-green-400"><Check size={17} /> Message sent successfully.</p>}
-                {status === 'error' && <p className="max-w-xs text-base text-red-700 dark:text-red-400">{error}</p>}
+                </Button>
+                {status === 'success' && <p className="flex items-center gap-2 text-base contact-success"><Check size={17} /> Message sent successfully.</p>}
+                {status === 'error' && <p className="max-w-xs text-base contact-error">{error}</p>}
               </div>
             </form>
           </Reveal>

@@ -113,7 +113,8 @@ function playSwordClash(nodes: AudioNodes) {
 }
 
 export function SoundProvider({ children }: { children: ReactNode }) {
-  const [enabled, setEnabled] = useState(readInitialSound);
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => { setEnabled(readInitialSound()); }, []);
   const nodesRef = useRef<AudioNodes | null>(null);
 
   const getNodes = useCallback(() => {
@@ -168,6 +169,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     const nodes = nodesRef.current;
     nodes?.ambientSources.forEach((source) => source.stop());
     void nodes?.context.close();
+    nodesRef.current = null;
   }, []);
 
   const value = useMemo(() => ({ enabled, toggleSound, playSound }), [enabled, toggleSound, playSound]);

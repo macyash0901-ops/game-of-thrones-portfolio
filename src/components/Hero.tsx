@@ -6,8 +6,8 @@ import { SplitText } from '@/components/SplitText';
 import { heroStats, profile } from '@/data/portfolio';
 import { useParallax } from '@/hooks/useParallax';
 
-const HERO_IMAGE =
-  'https://images.pexels.com/photos/29223328/pexels-photo-29223328.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
+import castleAsset from '@/assets/portfolio-castle.asset.json';
+const HERO_IMAGE = castleAsset.url;
 
 export function Hero() {
   const photoRef = useParallax<HTMLDivElement>(0.18);

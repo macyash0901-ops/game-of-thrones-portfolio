@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Portfolio architecture
+- Keep the imported portfolio at the TanStack index route with its original reusable sections; retain the managed TanStack bootstrap rather than importing the source SPA entry point.
+- Preserve the source theme through Tailwind v4 CSS tokens, and restore browser preferences after hydration to keep server rendering safe.
+- Contact messages use the generated Cloud client with insert-only public access; visitors must never be able to read submitted messages.

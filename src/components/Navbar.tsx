@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from 'react';
 import { Crown, Menu, X } from 'lucide-react';
 import { SoundToggle } from '@/components/SoundToggle';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -8,6 +9,14 @@ import { cn } from '@/lib/cn';
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && open) { setOpen(false); menuRef.current?.focus(); }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -44,7 +53,8 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <SoundToggle />
           <ThemeToggle />
-          <button
+          <Button variant="imported" size="imported"
+            ref={menuRef}
             data-sfx="click"
             type="button"
             onClick={() => setOpen((value) => !value)}
@@ -54,12 +64,13 @@ export function Navbar() {
             className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-accent md:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          </Button>
         </div>
       </nav>
 
       <div
         id="mobile-menu"
+        inert={!open}
         className={cn(
           'overflow-hidden border-line bg-bg/95 backdrop-blur-md transition-[max-height] duration-500 md:hidden',
           open ? 'max-h-96 border-b' : 'max-h-0',
