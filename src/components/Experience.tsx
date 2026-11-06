@@ -6,7 +6,7 @@ import { experience } from '@/data/portfolio';
 
 export function Experience() {
   const [active, setActive] = useState(0);
-  const entry = experience[active];
+  const entry = experience[active] ?? experience[0]!;
 
   return (
     <section id="experience" className="relative px-6 py-32">
