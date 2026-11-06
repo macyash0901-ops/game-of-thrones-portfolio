@@ -7,7 +7,6 @@ import { navLinks, profile } from '@/data/portfolio';
 import { cn } from '@/lib/cn';
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -18,29 +17,20 @@ export function Navbar() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
     <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-500',
-        scrolled || open ? 'border-b border-line bg-bg/90 backdrop-blur-md' : 'border-b border-transparent bg-transparent',
-      )}
+      className="fixed inset-x-3 top-4 z-50 mx-auto max-w-6xl rounded-[36px] border border-line bg-surface/90 backdrop-blur-xl transition-colors duration-500 sm:inset-x-6"
     >
-      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+      <nav aria-label="Main navigation" className="flex h-[72px] items-center justify-between gap-4 px-4 sm:px-6">
         <a href="#top" className="group flex items-center gap-3" aria-label={`${profile.name} home`}>
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-accent/60 text-accent transition-transform duration-500 group-hover:rotate-[20deg]">
             <Crown size={18} strokeWidth={1.75} />
           </span>
-          <span className="font-display text-lg font-semibold tracking-[0.18em] text-ink">YD</span>
+          <span className="hidden font-display text-base font-semibold text-ink xl:block">Yash Drall</span>
+          <span className="font-display text-lg font-semibold text-ink xl:hidden">YD</span>
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a data-sfx="click" href={link.href} className="nav-link font-display text-[13px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-ink">
@@ -50,9 +40,12 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <SoundToggle />
           <ThemeToggle />
+          <Button asChild variant="imported" size="imported" className="hidden h-10 rounded-full bg-accent px-5 font-display text-xs text-bg transition-colors hover:bg-accent/90 sm:inline-flex">
+            <a href="#contact" data-sfx="click">Let’s connect</a>
+          </Button>
           <Button variant="imported" size="imported"
             ref={menuRef}
             data-sfx="click"
@@ -61,7 +54,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-accent md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-accent lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </Button>
@@ -72,8 +65,8 @@ export function Navbar() {
         id="mobile-menu"
         inert={!open}
         className={cn(
-          'overflow-hidden border-line bg-bg/95 backdrop-blur-md transition-[max-height] duration-500 md:hidden',
-          open ? 'max-h-96 border-b' : 'max-h-0',
+          'overflow-hidden rounded-b-[36px] border-line transition-[max-height] duration-500 lg:hidden',
+          open ? 'max-h-96 border-t' : 'max-h-0',
         )}
       >
         <ul className="flex flex-col gap-1 px-6 py-4">
