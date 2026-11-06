@@ -35,4 +35,5 @@ use the editor.
 - Contact messages use the generated Cloud client with insert-only public access; visitors must never be able to read submitted messages.
 
 - Route looping music and effects through the shared Web Audio engine; attempt playback after hydration, retry browser-blocked autoplay on trusted interaction, pause without resetting on mute, and clean up on unmount.
+- Define shared sound context separately from its provider component so live component refreshes preserve context identity for consumers.
 - Reset initial portfolio scroll and clear stale anchors after hydration; disable router restoration so chapter navigation does not determine a fresh page's opening position.

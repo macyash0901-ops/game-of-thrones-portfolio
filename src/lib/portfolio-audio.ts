@@ -1,11 +1,6 @@
 import musicAsset from '@/assets/portfolio-music.mp3.asset.json';
 
-export const SOUND_STORAGE_KEY = 'yd-sound';
 export const DEFAULT_SOUND_ENABLED = true;
-
-export function soundPreference(stored: string | null): boolean {
-  return stored !== 'off';
-}
 
 export type SoundName = 'click' | 'sword';
 

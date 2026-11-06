@@ -6,7 +6,7 @@ import { SplitText } from '@/components/SplitText';
 import { heroStats, profile } from '@/data/portfolio';
 
 
-import dragonAsset from '@/assets/gotbg1.jpg.asset.json';
+import dragonAsset from '@/assets/gotbg2.jpg.asset.json';
 const HERO_IMAGE = dragonAsset.url;
 
 export function Hero() {
@@ -16,7 +16,7 @@ export function Hero() {
     <section id="top" className="portfolio-hero relative flex items-center overflow-hidden">
       <div className="absolute inset-0 -z-0">
         <div className="absolute inset-0">
-          <img src={HERO_IMAGE} alt="An ice dragon and the Night King in a snowy landscape" fetchPriority="high" className="hero-photo h-full w-full object-cover" />
+          <img src={HERO_IMAGE} alt="A golden-eyed dragon above a fiery battlefield" fetchPriority="high" className="hero-photo h-full w-full object-cover" />
         </div>
         <div className="hero-image-vignette absolute inset-0" />
         <div className="hero-image-bottom absolute inset-x-0 bottom-0 h-2/3" />
