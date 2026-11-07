@@ -1,7 +1,7 @@
-import { Crown, Flame, Volume2 } from 'lucide-react';
+import { Crown, Flame, Shield, Swords } from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useSound } from '@/hooks/useSound';
-import dragonImage from '@/assets/gotbg2.jpg';
+const dragonImage = '/assets/gotbg2.jpg';
 
 export function RealmEntry() {
   const { activateSound } = useSound();
@@ -37,17 +37,25 @@ export function RealmEntry() {
     <section className={`realm-entry ${leaving ? 'is-leaving' : ''}`} aria-label="Enter the portfolio">
       <img className="realm-entry-dragon" src={dragonImage} alt="" aria-hidden="true" />
       <div className="realm-entry-shade" />
+      <div className="realm-entry-grain" aria-hidden="true" />
+      <div className="realm-entry-banner realm-entry-banner-left" aria-hidden="true"><span /></div>
+      <div className="realm-entry-banner realm-entry-banner-right" aria-hidden="true"><span /></div>
       <div className="realm-entry-runes" aria-hidden="true"><span /><span /><span /></div>
       <div className="realm-entry-content">
-        <div className="realm-entry-crown" aria-hidden="true"><Crown size={42} strokeWidth={1.15} /></div>
-        <p className="realm-entry-kicker"><Flame size={15} aria-hidden="true" /> A portfolio forged in fire</p>
-        <h1>The realm awaits</h1>
-        <p className="realm-entry-copy">Steel your resolve. The dragon is near.</p>
+        <div className="realm-entry-sigil" aria-hidden="true">
+          <Swords className="realm-entry-swords" size={52} strokeWidth={1} />
+          <div className="realm-entry-crown"><Crown size={35} strokeWidth={1.15} /></div>
+        </div>
+        <p className="realm-entry-kicker"><Flame size={14} aria-hidden="true" /> Westeros calls</p>
+        <div className="realm-entry-title-rule" aria-hidden="true"><span /></div>
+        <h1><span>The game</span><em>of thrones</em></h1>
+        <p className="realm-entry-copy">A chronicle of craft, ambition, and fire.</p>
+        <div className="realm-entry-house-line" aria-hidden="true"><Shield size={14} strokeWidth={1.5} /><span>House of the portfolio</span><Shield size={14} strokeWidth={1.5} /></div>
         <button ref={buttonRef} type="button" onClick={enterRealm} className="realm-entry-button">
-          <span>Enter the realm</span>
-          {/* <Volume2 size={18} aria-hidden="true" /> */}
+          <span>Claim your seat</span>
+          <Swords size={17} strokeWidth={1.8} aria-hidden="true" />
         </button>
-        {/* <p className="realm-entry-note">Sound will begin when you enter</p> */}
+        <p className="realm-entry-note">Sound awakens with your command</p>
       </div>
       <div className="realm-entry-sparks" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <i key={index} style={{ '--spark-left': `${(index * 31) % 100}%`, '--spark-duration': `${4 + (index % 5) * .8}s`, '--spark-delay': `${index * -.33}s` } as CSSProperties} />)}</div>
     </section>

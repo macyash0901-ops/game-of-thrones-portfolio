@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import stark from '@/assets/bgstark.jpeg';
-import lannister from '@/assets/bglannister.jpg';
-import baratheon from '@/assets/bgbaratheon.jpeg';
-import greyjoy from '@/assets/Antique Gold Kraken Heraldic Banner.png';
-import targaryen from '@/assets/gotbg1.jpg';
-import banners from '@/assets/Storm-Battered Heraldry Above the Ruins.png';
+const stark = '/assets/bgstark.jpeg';
+const lannister = '/assets/bglannister.jpg';
+const baratheon = '/assets/bgbaratheon.jpeg';
+const greyjoy = '/assets/greyjoy-banner.png';
+const targaryen = '/assets/gotbg1.jpg';
+const banners = '/assets/house-banners.png';
 
 const houses: Array<[string, string, string]> = [
   ['about', 'lannister', lannister],

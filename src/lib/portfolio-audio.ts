@@ -1,4 +1,4 @@
-import musicUrl from '@/assets/videoplayback.webm';
+const musicUrl = '/assets/videoplayback.webm';
 
 export const DEFAULT_SOUND_ENABLED = true;
 

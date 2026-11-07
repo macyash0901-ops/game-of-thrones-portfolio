@@ -7,7 +7,7 @@ import { ValyrianText } from '@/components/ValyrianText';
 import { heroStats, profile } from '@/data/portfolio';
 
 
-import HERO_IMAGE from '@/assets/gotbg2.jpg';
+const HERO_IMAGE = '/assets/gotbg2.jpg';
 
 export function Hero() {
 

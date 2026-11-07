@@ -5,7 +5,7 @@ import { Embers } from '@/components/Embers';
 import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { profile } from '@/data/portfolio';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/integrations/supabase/next-client';
 
 interface FormState {
   name: string;

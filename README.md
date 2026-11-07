@@ -2,7 +2,7 @@
 
 Imported website: https://github.com/YashDrall19/Portfolio_GOT.git
 
-This project was built with [Lovable](https://lovable.dev).
+This project is built with [Next.js](https://nextjs.org/) and can continue to use Lovable-managed Supabase credentials.
 
 ## Build with Lovable
 
@@ -19,6 +19,8 @@ Prefer working locally? You need Node.js and npm — [install with nvm](https://
 ```sh
 git clone <this-repository-url>
 cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+Copy `.env.example` to `.env` and provide the public Supabase URL and publishable key if you want contact form submissions enabled. The database policy must remain insert-only for anonymous visitors.
