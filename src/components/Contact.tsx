@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FormEvent, useState } from 'react';
 import { ArrowUpRight, Check, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Embers } from '@/components/Embers';
 import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { profile } from '@/data/portfolio';
@@ -53,8 +54,9 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden px-6 py-32">
+      <Embers />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-crimson/10 to-transparent" />
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading
           chapter="Final Chapter"
           title="When the realm calls, answer"

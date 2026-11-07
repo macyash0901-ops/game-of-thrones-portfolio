@@ -11,6 +11,7 @@ import { HouseBackdrops } from '@/components/HouseBackdrops';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Navbar } from '@/components/Navbar';
 import { Projects } from '@/components/Projects';
+import { RealmEntry } from '@/components/RealmEntry';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { Skills } from '@/components/Skills';
 import { SoundProvider } from '@/context/SoundContext';
@@ -23,8 +24,9 @@ function Index() {
     return () => cancelAnimationFrame(frame);
   }, []);
   return (
-    <SoundProvider>
+    <SoundProvider requireEntry>
       <ThemeProvider>
+        <RealmEntry />
         <ScrollProgress />
         <HouseBackdrops />
         <ScrollReveal />

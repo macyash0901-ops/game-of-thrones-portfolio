@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/Reveal';
+import { Embers } from '@/components/Embers';
 import { SectionHeading } from '@/components/SectionHeading';
 import { TiltCard } from '@/components/TiltCard';
 import { projects } from '@/data/portfolio';
@@ -6,7 +7,8 @@ import { projects } from '@/data/portfolio';
 export function Projects() {
   return (
     <section id="work" className="relative px-6 py-32">
-      <div className="mx-auto max-w-6xl">
+      <Embers />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading
           chapter="Chapter III"
           title="The work speaks for the builder"

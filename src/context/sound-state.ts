@@ -4,6 +4,7 @@ import type { SoundName } from '@/lib/portfolio-audio';
 interface SoundContextValue {
   enabled: boolean;
   playing: boolean;
+  activateSound: () => void;
   toggleSound: () => void;
   playSound: (name: SoundName) => void;
 }

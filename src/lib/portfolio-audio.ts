@@ -30,14 +30,17 @@ export class PortfolioAudio {
     this.music.addEventListener('ended', this.scheduleRestart);
   }
 
-  async start(userGesture = false) {
+  async start() {
     if (this.context.state === 'closed') return false;
     this.active = true;
     this.clearRestartTimer();
     const shouldResume = this.context.state !== 'running';
 
     const results = await Promise.allSettled([
-      shouldResume && userGesture ? this.context.resume() : Promise.resolve(),
+      // Request the context immediately on page load. Browsers that allow
+      // audible autoplay will start here; browsers that block it will reject
+      // the request and the provider retries on the next trusted interaction.
+      shouldResume ? this.context.resume() : Promise.resolve(),
       this.music.play(),
     ]);
     const failures = results

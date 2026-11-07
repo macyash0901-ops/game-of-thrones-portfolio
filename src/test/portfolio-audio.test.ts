@@ -13,7 +13,7 @@ describe('Uploaded background music', () => {
     vi.unstubAllGlobals();
   });
 
-  it('does not resume a suspended audio context until a user gesture', async () => {
+  it('requests a suspended audio context immediately on startup', async () => {
     const listeners = new Map<string, EventListener>();
     const music = {
       loop: false,
@@ -47,11 +47,11 @@ describe('Uploaded background music', () => {
     });
 
     const audio = new PortfolioAudio();
-    expect(await audio.start()).toBe(false);
-    expect(resumeContext).not.toHaveBeenCalled();
+    expect(await audio.start()).toBe(true);
+    expect(resumeContext).toHaveBeenCalledOnce();
     expect(music.play).toHaveBeenCalledOnce();
 
-    expect(await audio.start(true)).toBe(true);
+    expect(await audio.start()).toBe(true);
     expect(resumeContext).toHaveBeenCalledOnce();
     expect(music.play).toHaveBeenCalledTimes(2);
     audio.dispose();

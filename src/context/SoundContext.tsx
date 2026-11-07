@@ -1,16 +1,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { DEFAULT_SOUND_ENABLED, PortfolioAudio, type SoundName } from '@/lib/portfolio-audio';
 import { SoundContext } from '@/context/sound-state';
-export function SoundProvider({ children }: { children: ReactNode }) {
-  const [enabled, setEnabled] = useState(DEFAULT_SOUND_ENABLED);
+export function SoundProvider({ children, requireEntry = false }: { children: ReactNode; requireEntry?: boolean }) {
+  const initialEnabled = requireEntry ? false : DEFAULT_SOUND_ENABLED;
+  const [enabled, setEnabled] = useState(initialEnabled);
   const [playing, setPlaying] = useState(false);
-  const enabledRef = useRef(DEFAULT_SOUND_ENABLED);
+  const enabledRef = useRef(initialEnabled);
   const audioRef = useRef<PortfolioAudio | null>(null);
-  const start = useCallback(async (userGesture = false) => {
+  const start = useCallback(async () => {
     if (!enabledRef.current) return;
     try {
       if (!audioRef.current) audioRef.current = new PortfolioAudio();
-      const started = await audioRef.current.start(userGesture);
+      const started = await audioRef.current.start();
       if (enabledRef.current) setPlaying(started);
       else audioRef.current.stop();
     } catch (error) {
@@ -19,8 +20,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     }
   }, []);
   useEffect(() => {
-    void start();
-  }, [start]);
+    if (enabledRef.current) void start();
+  }, [start, initialEnabled]);
   const playSound = useCallback((name: SoundName) => {
     if (enabledRef.current) audioRef.current?.play(name);
   }, []);
@@ -28,15 +29,23 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     const next = !enabledRef.current;
     enabledRef.current = next;
     setEnabled(next);
-    if (next) void start(true);
+    if (next) void start();
     else { audioRef.current?.stop(); setPlaying(false); }
+  }, [start]);
+  const activateSound = useCallback(() => {
+    if (enabledRef.current) return;
+    enabledRef.current = true;
+    setEnabled(true);
+    // This runs synchronously inside the entry button's trusted click event,
+    // which is the browser-supported way to unlock audible playback.
+    void start();
   }, [start]);
   useEffect(() => {
     // Retry blocked autoplay on the first genuine interaction, not just the toggle.
     const activate = (event: Event) => {
       if (!event.isTrusted) return;
       if (event instanceof KeyboardEvent && !['Enter', ' ', 'Tab'].includes(event.key)) return;
-      void start(true).then(() => {
+      void start().then(() => {
         if (!(event.target instanceof Element)) return;
         const sound = event.target.closest<HTMLElement>('[data-sfx]')?.dataset['sfx'];
         if (sound === 'click' || sound === 'sword') playSound(sound);
@@ -57,6 +66,6 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       audioRef.current = null;
     };
   }, [start, playSound]);
-  const value = useMemo(() => ({ enabled, playing, toggleSound, playSound }), [enabled, playing, toggleSound, playSound]);
+  const value = useMemo(() => ({ enabled, playing, activateSound, toggleSound, playSound }), [enabled, playing, activateSound, toggleSound, playSound]);
   return <SoundContext.Provider value={value}>{children}</SoundContext.Provider>;
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Calendar, MapPin } from 'lucide-react';
+import { Embers } from '@/components/Embers';
 import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { experience } from '@/data/portfolio';
@@ -10,7 +11,8 @@ export function Experience() {
 
   return (
     <section id="experience" className="relative px-6 py-32">
-      <div className="mx-auto max-w-6xl">
+      <Embers />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading chapter="Chapter II" title="Every stronghold is built by many hands" />
 
         <Reveal>

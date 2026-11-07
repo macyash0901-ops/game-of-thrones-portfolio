@@ -1,11 +1,13 @@
 import { Reveal } from '@/components/Reveal';
+import { Embers } from '@/components/Embers';
 import { SectionHeading } from '@/components/SectionHeading';
 import { skillGroups } from '@/data/portfolio';
 
 export function Skills() {
   return (
     <section id="skills" className="relative px-6 py-32">
-      <div className="mx-auto max-w-6xl">
+      <Embers />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading
           chapter="Chapter IV"
           title="The armory"

@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/Reveal';
+import { Embers } from '@/components/Embers';
 import { SectionHeading } from '@/components/SectionHeading';
 import { TiltCard } from '@/components/TiltCard';
 import { highlights, profile } from '@/data/portfolio';
@@ -9,9 +10,10 @@ export function About() {
 
   return (
     <section id="about" className="relative overflow-hidden px-6 py-32">
+      <Embers />
       <div ref={backdropRef} aria-hidden="true" className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading chapter="Chapter I" title="A sharp mind builds a stronger realm" />
 
         <Reveal>

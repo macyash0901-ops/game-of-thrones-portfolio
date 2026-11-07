@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/Reveal';
+import { Embers } from '@/components/Embers';
 import { SectionHeading } from '@/components/SectionHeading';
 import { TiltCard } from '@/components/TiltCard';
 import { education } from '@/data/portfolio';
@@ -8,7 +9,8 @@ export function Education() {
 
   return (
     <section id="education" className="relative px-6 py-32">
-      <div className="mx-auto max-w-4xl">
+      <Embers />
+      <div className="relative z-10 mx-auto max-w-4xl">
         <SectionHeading chapter="Chapter V" title="No throne stands without foundations" />
 
         <Reveal>
