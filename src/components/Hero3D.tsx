@@ -1,27 +1,36 @@
-import { useState, type CSSProperties, type PointerEvent } from 'react';
-import { Braces, BrainCircuit, Cloud, Crown, Database, ShieldCheck, Smartphone } from 'lucide-react';
+import { useRef, type CSSProperties, type PointerEvent } from "react";
+import {
+  Braces,
+  BrainCircuit,
+  Cloud,
+  Crown,
+  Database,
+  ShieldCheck,
+  Smartphone,
+} from "lucide-react";
 
 export function Hero3D() {
-  const [rotation, setRotation] = useState({ x: -7, y: 12 });
+  const sceneRef = useRef<HTMLDivElement>(null);
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType !== 'mouse') return;
+    if (event.pointerType !== "mouse") return;
     const rect = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
-    setRotation({ x: -y * 18 - 4, y: x * 22 + 8 });
+    event.currentTarget.style.setProperty("--hero-rotate-x", `${-y * 18 - 4}deg`);
+    event.currentTarget.style.setProperty("--hero-rotate-y", `${x * 22 + 8}deg`);
   };
 
-  const resetRotation = () => setRotation({ x: -7, y: 12 });
-  const sceneStyle = {
-    '--hero-rotate-x': `${rotation.x}deg`,
-    '--hero-rotate-y': `${rotation.y}deg`,
-  } as CSSProperties;
+  const resetRotation = () => {
+    sceneRef.current?.style.setProperty("--hero-rotate-x", "-7deg");
+    sceneRef.current?.style.setProperty("--hero-rotate-y", "12deg");
+  };
 
   return (
     <div
+      ref={sceneRef}
       className="hero-3d-scene relative mx-auto h-[320px] w-full max-w-[520px] [perspective:1200px] lg:h-[420px]"
-      style={sceneStyle}
+      style={{ "--hero-rotate-x": "-7deg", "--hero-rotate-y": "12deg" } as CSSProperties}
       onPointerMove={handlePointerMove}
       onPointerLeave={resetRotation}
       aria-label="Interactive three-dimensional technology sigil"
@@ -36,7 +45,9 @@ export function Hero3D() {
             <Crown size={42} strokeWidth={1.2} />
           </div>
           <div>
-            <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">The builder's sigil</p>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
+              The builder's sigil
+            </p>
             <p className="mt-2 font-display text-xl text-ink">Code. Clarity. Craft.</p>
           </div>
         </div>

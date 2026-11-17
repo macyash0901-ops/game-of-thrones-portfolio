@@ -443,6 +443,10 @@
     visibility: hidden;
   }
 
+  .visible {
+    visibility: visible;
+  }
+
   .sr-only {
     clip-path: inset(50%);
     white-space: nowrap;
@@ -4044,7 +4048,6 @@
   transform-origin: 50% 100%;
   transition: opacity .7s cubic-bezier(.2, .65, .3, 1), transform .9s cubic-bezier(.2, .65, .3, 1);
   transition-delay: var(--d, 0s);
-  will-change: transform, opacity;
   display: inline-block;
   transform: translate3d(0, .6em, 0) rotateX(-70deg);
 }
@@ -4061,15 +4064,13 @@
 
 .reveal {
   opacity: 0;
-  filter: blur(6px);
-  transition: opacity .9s cubic-bezier(.2, .65, .3, 1), transform .9s cubic-bezier(.2, .65, .3, 1), filter .9s cubic-bezier(.2, .65, .3, 1);
+  transition: opacity .9s cubic-bezier(.2, .65, .3, 1), transform .9s cubic-bezier(.2, .65, .3, 1);
   transition-delay: var(--reveal-delay, 0s);
   transform: translate3d(0, 36px, 0);
 }
 
 .reveal.is-visible {
   opacity: 1;
-  filter: blur();
   transform: translate3d(0, 0, 0);
 }
 
@@ -4131,7 +4132,6 @@
 .ember {
   opacity: 0;
   animation: ember-drift var(--dur, 9s) linear var(--delay, 0s) infinite;
-  will-change: transform, opacity;
 }
 
 @keyframes ember-drift {
@@ -5378,7 +5378,6 @@ section[data-house]:before {
   background: var(--house-bg) center / cover no-repeat;
   transform: scale(var(--house-zoom, 1.04));
   transform-origin: center;
-  will-change: transform;
   filter: saturate(1.05) brightness(.8);
   position: absolute;
   inset: 0;
@@ -5719,15 +5718,13 @@ section[data-house]:after {
 
 .sr {
   opacity: 0;
-  filter: blur(4px);
-  transition: opacity .8s cubic-bezier(.2, .65, .3, 1), transform .8s cubic-bezier(.2, .65, .3, 1), filter .8s;
+  transition: opacity .65s cubic-bezier(.2, .65, .3, 1), transform .65s cubic-bezier(.2, .65, .3, 1);
   transition-delay: var(--sr-delay, 0s);
   transform: translate3d(0, 28px, 0) scale(.98);
 }
 
 .sr.sr-in {
   opacity: 1;
-  filter: none;
   transform: none;
 }
 
@@ -5743,6 +5740,57 @@ section[data-house]:after {
 
 .hero-motto {
   margin-bottom: 8px;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .ambient-embers .ember {
+    opacity: .3;
+    box-shadow: none;
+    animation: none;
+  }
+
+  .ambient-embers .ember:nth-child(n+5) {
+    display: none;
+  }
+
+  .gold-gradient-text {
+    background-position: center;
+    animation: none;
+  }
+
+  .valyrian-text {
+    animation: none;
+    transform: none;
+  }
+
+  .hero-3d-orbit, .hero-3d-badge {
+    animation: none;
+  }
+
+  .tilt-card {
+    transform-style: flat;
+    transform: none !important;
+  }
+
+  .tilt-card > * {
+    transform: none;
+  }
+
+  .tilt-card .card-sheen {
+    display: none;
+  }
+
+  .backdrop-blur, .backdrop-blur-xl {
+    -webkit-backdrop-filter: none;
+  }
+
+  .realm-entry-dragon, .realm-entry-runes, .realm-entry-crown, .realm-entry-banner, .realm-entry-sparks i {
+    animation: none;
+  }
+
+  .realm-entry-sparks {
+    display: none;
+  }
 }
 
 @property --tw-translate-x {

@@ -1005,7 +1005,7 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 ;
-const EMBER_COUNT = 50;
+const EMBER_COUNT = 18;
 function Embers() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         "aria-hidden": "true",
@@ -1019,18 +1019,18 @@ function Embers() {
                 top: `${index * 53 % 100}%`,
                 width: `${size}px`,
                 height: `${size}px`,
-                '--dur': `${2.5 + index * 13 % 2}s`,
-                '--delay': `${-(index * 5 % 17)}s`,
-                '--drift-x': `${index * 37 % 241 - 120}px`,
-                '--drift-y': `${index * 53 % 201 - 100}px`,
-                '--ember-size': `${size}px`
+                "--dur": `${2.5 + index * 13 % 2}s`,
+                "--delay": `${-(index * 5 % 17)}s`,
+                "--drift-x": `${index * 37 % 241 - 120}px`,
+                "--drift-y": `${index * 53 % 201 - 100}px`,
+                "--ember-size": `${size}px`
             };
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                 className: "ember",
                 style: style
             }, index, false, {
                 fileName: "[project]/src/components/Embers.tsx",
-                lineNumber: 21,
+                lineNumber: 24,
                 columnNumber: 16
             }, this);
         })
@@ -1731,31 +1731,26 @@ var _s = __turbopack_context__.k.signature();
 ;
 function Hero3D() {
     _s();
-    const [rotation, setRotation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        x: -7,
-        y: 12
-    });
+    const sceneRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const handlePointerMove = (event)=>{
-        if (event.pointerType !== 'mouse') return;
+        if (event.pointerType !== "mouse") return;
         const rect = event.currentTarget.getBoundingClientRect();
         const x = (event.clientX - rect.left) / rect.width - 0.5;
         const y = (event.clientY - rect.top) / rect.height - 0.5;
-        setRotation({
-            x: -y * 18 - 4,
-            y: x * 22 + 8
-        });
+        event.currentTarget.style.setProperty("--hero-rotate-x", `${-y * 18 - 4}deg`);
+        event.currentTarget.style.setProperty("--hero-rotate-y", `${x * 22 + 8}deg`);
     };
-    const resetRotation = ()=>setRotation({
-            x: -7,
-            y: 12
-        });
-    const sceneStyle = {
-        '--hero-rotate-x': `${rotation.x}deg`,
-        '--hero-rotate-y': `${rotation.y}deg`
+    const resetRotation = ()=>{
+        sceneRef.current?.style.setProperty("--hero-rotate-x", "-7deg");
+        sceneRef.current?.style.setProperty("--hero-rotate-y", "12deg");
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        ref: sceneRef,
         className: "hero-3d-scene relative mx-auto h-[320px] w-full max-w-[520px] [perspective:1200px] lg:h-[420px]",
-        style: sceneStyle,
+        style: {
+            "--hero-rotate-x": "-7deg",
+            "--hero-rotate-y": "12deg"
+        },
         onPointerMove: handlePointerMove,
         onPointerLeave: resetRotation,
         "aria-label": "Interactive three-dimensional technology sigil",
@@ -1765,14 +1760,14 @@ function Hero3D() {
                 className: "hero-3d-orbit hero-3d-orbit-one"
             }, void 0, false, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 30,
+                lineNumber: 39,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "hero-3d-orbit hero-3d-orbit-two"
             }, void 0, false, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 31,
+                lineNumber: 40,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1782,7 +1777,7 @@ function Hero3D() {
                         className: "absolute inset-3 rounded-[1.5rem] border border-accent/20"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 33,
+                        lineNumber: 42,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1795,12 +1790,12 @@ function Hero3D() {
                                     strokeWidth: 1.2
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Hero3D.tsx",
-                                    lineNumber: 36,
+                                    lineNumber: 45,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Hero3D.tsx",
-                                lineNumber: 35,
+                                lineNumber: 44,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1810,7 +1805,7 @@ function Hero3D() {
                                         children: "The builder's sigil"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Hero3D.tsx",
-                                        lineNumber: 39,
+                                        lineNumber: 48,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1818,25 +1813,25 @@ function Hero3D() {
                                         children: "Code. Clarity. Craft."
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Hero3D.tsx",
-                                        lineNumber: 40,
+                                        lineNumber: 51,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Hero3D.tsx",
-                                lineNumber: 38,
+                                lineNumber: 47,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 34,
+                        lineNumber: 43,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 32,
+                lineNumber: 41,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1847,14 +1842,14 @@ function Hero3D() {
                         className: "text-accent"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 46,
+                        lineNumber: 57,
                         columnNumber: 9
                     }, this),
                     " React / Next.js"
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 45,
+                lineNumber: 56,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1865,14 +1860,14 @@ function Hero3D() {
                         className: "text-accent"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 49,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, this),
                     " Python / Data"
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 48,
+                lineNumber: 59,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1883,14 +1878,14 @@ function Hero3D() {
                         className: "text-accent"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 52,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this),
                     " Secure by design"
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 51,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1901,14 +1896,14 @@ function Hero3D() {
                         className: "text-accent"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 55,
+                        lineNumber: 66,
                         columnNumber: 9
                     }, this),
                     " Flutter/React Native"
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 54,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1919,14 +1914,14 @@ function Hero3D() {
                         className: "text-accent"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 58,
+                        lineNumber: 69,
                         columnNumber: 9
                     }, this),
                     " AI/ML"
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 57,
+                lineNumber: 68,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1937,24 +1932,24 @@ function Hero3D() {
                         className: "text-accent"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero3D.tsx",
-                        lineNumber: 61,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, this),
                     " Cloud/DevOps"
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Hero3D.tsx",
-                lineNumber: 60,
+                lineNumber: 71,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Hero3D.tsx",
-        lineNumber: 22,
+        lineNumber: 30,
         columnNumber: 5
     }, this);
 }
-_s(Hero3D, "2l832ZzhfKU7pOxNu4RVgdlnqbg=");
+_s(Hero3D, "FXDgyORlC8mpSSprGBAf6LvWhCc=");
 _c = Hero3D;
 var _c;
 __turbopack_context__.k.register(_c, "Hero3D");
@@ -1972,41 +1967,41 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var _s = __turbopack_context__.k.signature();
 ;
-const stark = '/assets/bgstark.jpeg';
-const lannister = '/assets/bglannister.jpg';
-const baratheon = '/assets/bgbaratheon.jpeg';
-const greyjoy = '/assets/greyjoy-banner.png';
-const targaryen = '/assets/gotbg1.jpg';
-const banners = '/assets/house-banners.png';
+const stark = "/assets/bgstark.jpeg";
+const lannister = "/assets/bglannister.jpg";
+const baratheon = "/assets/bgbaratheon.jpeg";
+const greyjoy = "/assets/greyjoy-banner.png";
+const targaryen = "/assets/gotbg1.jpg";
+const banners = "/assets/house-banners.png";
 const houses = [
     [
-        'about',
-        'lannister',
+        "about",
+        "lannister",
         lannister
     ],
     [
-        'experience',
-        'baratheon',
+        "experience",
+        "baratheon",
         baratheon
     ],
     [
-        'work',
-        'greyjoy',
+        "work",
+        "greyjoy",
         greyjoy
     ],
     [
-        'skills',
-        'stark',
+        "skills",
+        "stark",
         stark
     ],
     [
-        'education',
-        'targaryen',
+        "education",
+        "targaryen",
         targaryen
     ],
     [
-        'contact',
-        'banners',
+        "contact",
+        "banners",
         banners
     ]
 ];
@@ -2018,28 +2013,49 @@ function HouseBackdrops() {
                 "HouseBackdrops.useEffect.nodes": ([id, house, url])=>{
                     const el = document.getElementById(id);
                     if (!el) return null;
-                    el.dataset['house'] = house;
-                    el.style.setProperty('--house-bg', `url("${url}")`);
+                    el.dataset["house"] = house;
+                    el.style.setProperty("--house-bg", `url("${url}")`);
                     return el;
                 }
             }["HouseBackdrops.useEffect.nodes"]).filter(Boolean);
-            const hero = document.getElementById('top');
-            const heroImage = hero?.querySelector('.hero-photo');
-            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const hero = document.getElementById("top");
+            const heroImage = hero?.querySelector(".hero-photo");
+            const lowMotion = window.matchMedia("(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse)").matches;
+            if (lowMotion) {
+                heroImage?.style.setProperty("--hero-scroll-zoom", "1.05");
+                nodes.forEach({
+                    "HouseBackdrops.useEffect": (el)=>el.style.setProperty("--house-zoom", "1.05")
+                }["HouseBackdrops.useEffect"]);
+                return;
+            }
+            const targets = [
+                ...hero ? [
+                    hero
+                ] : [],
+                ...nodes
+            ];
+            const visible = new Set();
             let frame = 0;
             const update = {
                 "HouseBackdrops.useEffect.update": ()=>{
                     frame = 0;
                     const vh = window.innerHeight;
-                    if (hero && heroImage) {
-                        const rect = hero.getBoundingClientRect();
-                        const progress = Math.min(1, Math.max(0, (vh - rect.bottom) / (vh * 0.75)));
-                        heroImage.style.setProperty('--hero-scroll-zoom', reduce ? '1.05' : (1 + progress * 0.3).toFixed(4));
-                    }
-                    for (const el of nodes){
-                        const r = el.getBoundingClientRect();
-                        const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-                        el.style.setProperty('--house-zoom', reduce ? '1.05' : (1.05 + p * 0.35).toFixed(4));
+                    const measurements = [
+                        ...visible
+                    ].map({
+                        "HouseBackdrops.useEffect.update.measurements": (el)=>({
+                                el,
+                                rect: el.getBoundingClientRect()
+                            })
+                    }["HouseBackdrops.useEffect.update.measurements"]);
+                    for (const { el, rect } of measurements){
+                        if (el === hero && heroImage) {
+                            const progress = Math.min(1, Math.max(0, (vh - rect.bottom) / (vh * 0.75)));
+                            heroImage.style.setProperty("--hero-scroll-zoom", (1 + progress * 0.3).toFixed(4));
+                        } else {
+                            const progress = Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)));
+                            el.style.setProperty("--house-zoom", (1.05 + progress * 0.35).toFixed(4));
+                        }
                     }
                 }
             }["HouseBackdrops.useEffect.update"];
@@ -2048,15 +2064,34 @@ function HouseBackdrops() {
                     if (!frame) frame = requestAnimationFrame(update);
                 }
             }["HouseBackdrops.useEffect.onScroll"];
-            update();
-            window.addEventListener('scroll', onScroll, {
+            const observer = typeof IntersectionObserver === "undefined" ? null : new IntersectionObserver({
+                "HouseBackdrops.useEffect": (entries)=>{
+                    for (const entry of entries){
+                        const el = entry.target;
+                        if (entry.isIntersecting) visible.add(el);
+                        else visible.delete(el);
+                    }
+                    onScroll();
+                }
+            }["HouseBackdrops.useEffect"], {
+                rootMargin: "100% 0px"
+            });
+            if (observer) targets.forEach({
+                "HouseBackdrops.useEffect": (el)=>observer.observe(el)
+            }["HouseBackdrops.useEffect"]);
+            else targets.forEach({
+                "HouseBackdrops.useEffect": (el)=>visible.add(el)
+            }["HouseBackdrops.useEffect"]);
+            onScroll();
+            window.addEventListener("scroll", onScroll, {
                 passive: true
             });
-            window.addEventListener('resize', onScroll);
+            window.addEventListener("resize", onScroll);
             return ({
                 "HouseBackdrops.useEffect": ()=>{
-                    window.removeEventListener('scroll', onScroll);
-                    window.removeEventListener('resize', onScroll);
+                    observer?.disconnect();
+                    window.removeEventListener("scroll", onScroll);
+                    window.removeEventListener("resize", onScroll);
                     if (frame) cancelAnimationFrame(frame);
                 }
             })["HouseBackdrops.useEffect"];
